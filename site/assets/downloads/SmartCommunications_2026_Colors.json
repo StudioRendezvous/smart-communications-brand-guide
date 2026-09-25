@@ -1,0 +1,60 @@
+{
+  "source": "Smart Communications brand-execution-kit 2026 (Figma chip fills)",
+  "families": {
+    "UI Blue": {
+      "Darker": "#001F6D",
+      "Dark": "#1344C1",
+      "Default": "#326EEF",
+      "Light": "#90B1F4",
+      "Lighter": "#D6E2FC"
+    },
+    "Indigo Purple": {
+      "Darker": "#38009F",
+      "Dark": "#661DEE",
+      "Default": "#9963FD",
+      "Light": "#BE9DFA",
+      "Lighter": "#D9C9F7"
+    },
+    "Dodger Blue": {
+      "Darker": "#003154",
+      "Dark": "#0062A8",
+      "Default": "#0094FF",
+      "Light": "#57B8FF",
+      "Lighter": "#ABDCFF"
+    },
+    "Industry Blue": {
+      "Darker": "#03102C",
+      "Dark": "#072057",
+      "Default": "#0A3184",
+      "Light": "#5D77AE",
+      "Lighter": "#D6E2FC"
+    },
+    "Maya Blue": {
+      "Darker": "#2C3751",
+      "Dark": "#576FA2",
+      "Default": "#84A8F5",
+      "Light": "#AEC6F8",
+      "Lighter": "#D6E2FC"
+    },
+    "Hawkes Blue": {
+      "Darker": "#45494E",
+      "Dark": "#89939C",
+      "Default": "#D0DEEC",
+      "Light": "#E0E9F2",
+      "Lighter": "#EFF4F9"
+    },
+    "Regal Blue": {
+      "Darker": "#08131D",
+      "Dark": "#10263A",
+      "Default": "#183958",
+      "Light": "#677C91",
+      "Lighter": "#B3BEC8"
+    }
+  },
+  "utility": {
+    "Tiber": "#0E2030",
+    "White": "#FFFFFF",
+    "Glass": "#EAF2FF"
+  },
+  "notes": "No yellow/gold. Regal is a text color, not a seventh brand color."
+}

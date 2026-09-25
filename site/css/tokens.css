@@ -1,0 +1,105 @@
+/* Smart Communications 2026 — design tokens
+   Brand color: brand-execution-kit/tokens/colors.css (Figma chip fills, no yellow / gold).
+   Layout + component values: Figma "01b Brand Guide Layout" (515:607).
+   Site UI type is Roboto (kit rule: Digital + UI). Proxima Nova only appears in specimens. */
+
+:root {
+  /* ---- Brand palette ---------------------------------------------------- */
+  --sc-ui-blue-darker: #001F6D;
+  --sc-ui-blue-dark: #1344C1;
+  --sc-ui-blue: #326EEF;
+  --sc-ui-blue-light: #90B1F4;
+  --sc-ui-blue-lighter: #D6E2FC;
+
+  --sc-indigo-darker: #38009F;
+  --sc-indigo-dark: #661DEE;
+  --sc-indigo: #9963FD;
+  --sc-indigo-light: #BE9DFA;
+  --sc-indigo-lighter: #D9C9F7;
+
+  --sc-dodger-darker: #003154;
+  --sc-dodger-dark: #0062A8;
+  --sc-dodger: #0094FF;
+  --sc-dodger-light: #57B8FF;
+  --sc-dodger-lighter: #ABDCFF;
+
+  --sc-industry-darker: #03102C;
+  --sc-industry-dark: #072057;
+  --sc-industry: #0A3184;
+  --sc-industry-light: #5D77AE;
+  --sc-industry-lighter: #D6E2FC;
+
+  --sc-maya-darker: #2C3751;
+  --sc-maya-dark: #576FA2;
+  --sc-maya: #84A8F5;
+  --sc-maya-light: #AEC6F8;
+  --sc-maya-lighter: #D6E2FC;
+
+  --sc-hawkes-darker: #45494E;
+  --sc-hawkes-dark: #89939C;
+  --sc-hawkes: #D0DEEC;
+  --sc-hawkes-light: #E0E9F2;
+  --sc-hawkes-lighter: #EFF4F9;
+
+  --sc-regal: #183958;
+  --sc-white: #FFFFFF;
+  --sc-tiber: #0E2030;
+  --sc-glass: #EAF2FF;
+
+  /* ---- Semantic (Brand Guide Layout) ------------------------------------ */
+  --text-strong: var(--sc-tiber);          /* headings */
+  --text-body: #3D4F5E;                    /* body copy */
+  --text-muted: #5B6B7C;                   /* ledes */
+  --text-on-dark: #FFFFFF;
+  --text-on-dark-muted: #CFE0F5;
+
+  /* Eyebrows + nav: Figma uses Dodger #0094FF, which is 3.1:1 on white.
+     Dodger Dark keeps the family and clears WCAG AA at 13px. */
+  --accent-text: var(--sc-dodger-dark);
+
+  /* Buttons + links: UI Blue is the kit's web accent and passes AA (4.6:1). */
+  --action: var(--sc-ui-blue);
+  --action-hover: var(--sc-ui-blue-dark);
+  --focus: var(--sc-ui-blue);
+
+  --surface-page: #FFFFFF;
+  --surface-section: #F7FBFF;              /* Dodger Lighter @ 10% on white */
+  --surface-card: #FFFFFF;
+  --surface-tint: rgba(171, 220, 255, 0.25);
+
+  --line-accent: var(--sc-dodger-lighter); /* section card border #ABDCFF */
+  --line-card: #DCE6F0;                    /* inner card border */
+
+  --do-bg: #EAFAF1;  --do-line: #BFE6CF;  --do-text: #1C7A45;
+  --dont-bg: #FDEEEE; --dont-line: #F3C9C9; --dont-text: #B23535;
+
+  /* ---- Type --------------------------------------------------------------- */
+  --font-ui: "Roboto", Arial, sans-serif;
+  --font-brand: "Proxima Nova", "proxima-nova", Arial, sans-serif;
+
+  /* ---- Shape + space ------------------------------------------------------ */
+  --radius-section: 20px;
+  --radius-card: 16px;
+  --radius-panel: 14px;
+  --radius-callout: 12px;
+  --radius-btn: 10px;
+  --radius-tile: 8px;
+  --radius-pill: 999px;
+
+  --gutter: 96px;
+  --content-max: 1312px;
+
+  --shadow-nav: 0 4px 6px rgba(171, 220, 255, 0.9);
+  --shadow-pop: 0 12px 32px rgba(3, 16, 44, 0.18);
+
+  /* ---- Gradients (kit recipes) ------------------------------------------- */
+  --grad-primary: linear-gradient(90deg, #0A3184 0%, #0E2030 100%);
+  --grad-secondary: linear-gradient(90deg, #0094FF 0%, #0E2030 100%);
+  --grad-product: radial-gradient(120% 140% at 50% 0%, #FFFFFF 0%, #326EEF 32%, #0E2030 72%);
+  --grad-light: linear-gradient(90deg, rgba(0, 148, 255, 0.75) 0%, #FFFFFF 100%);
+  --grad-hero: radial-gradient(1100px 190px at 53% 105%, #FFFFFF 9%, #CCDBFB 15%, #6592F3 26%, #326EEF 32%, #20478F 50%, #173460 75%, #0E2030 100%);
+}
+
+@media (max-width: 900px) {
+  :root { --gutter: 16px; }
+}
