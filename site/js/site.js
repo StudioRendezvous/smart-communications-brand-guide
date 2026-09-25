@@ -364,14 +364,20 @@
     run();
   }
 
-  /* ---- Proxima Nova availability (specimens fall back to Arial) ------------------------------------------ */
+  /* ---- Font availability (specimens fall back to Arial) --------------------------------------------------- */
+  const c = document.createElement("canvas").getContext("2d");
+  const w = (f) => { c.font = `72px ${f}`; return c.measureText("Every letter, on brand. 0123").width; };
+  const installed = (face) => w(`"${face}", monospace`) !== w("monospace");
   const note = $("#proxima-note");
   if (note) {
-    const c = document.createElement("canvas").getContext("2d");
-    const w = (f) => { c.font = `72px ${f}`; return c.measureText("Every letter, on brand. 0123").width; };
-    const installed = w('"Proxima Nova", monospace') !== w("monospace");
-    note.innerHTML = installed
+    note.innerHTML = installed("Proxima Nova")
       ? "<strong>Proxima Nova is installed</strong> on this device, so the samples below render in the brand face."
       : "<strong>Showing Arial</strong> — Proxima Nova isn't installed on this device. Arial is the approved fallback until the Proxima files are in place.";
+  }
+  const segoe = $("#segoe-note");
+  if (segoe) {
+    segoe.innerHTML = installed("Segoe UI")
+      ? "<strong>Segoe UI is installed</strong> on this device, so the samples below render in it."
+      : "<strong>Showing Arial</strong> — Segoe UI isn't installed on this device (it comes with Windows and Office).";
   }
 })();
