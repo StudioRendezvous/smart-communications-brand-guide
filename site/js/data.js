@@ -86,6 +86,9 @@ window.SC_COLORS = {
 };
 
 /* 68 monoline icons. Labels + tags added for search; file slugs match the kit + Figma 1364:10877. */
+// Icons that have a designed Dodger accent (the 2-color sets)
+window.SC_ICON_2COLOR = ["ai-flow", "icon-09", "icon-10", "icon-11", "icon-12", "icon-37", "icon-49", "icon-51", "icon-54", "icon-55", "icon-56", "icon-57", "icon-58", "icon-60", "icon-61", "icon-62", "icon-64", "icon-66", "message-data", "messaging"];
+
 window.SC_ICONS = [
   ["ai-flow", "AI workflow", "ai automation process flow diagram"],
   ["bdd-testing", "Document cycle", "testing refresh update review"],

@@ -25,7 +25,7 @@ Then open http://localhost:4180. The dev server turns off caching so edits show 
 | `site/js/site.js` | Accordions, deep links, copy-to-clipboard, icon search, PNG export, naming checker |
 | `site/assets/logos/` | Approved SVG logos (company, products, tagline, Conversation Cloud) |
 | `site/assets/png-logos/` | 2000 px transparent PNGs of each logo |
-| `site/assets/icons/{dark,white}/` | The 68 monoline icons |
+| `site/assets/icons/{dark,light,dark-2color,light-2color}/` | The 68 monoline icons in four categories (2-color sets hold the 20 icons with a Dodger accent) |
 | `site/assets/downloads/` | Logo pack, icon packs, 2026 swatches (.ase), CSS + JSON tokens |
 | `tools/serve.py` | Local preview server |
 
@@ -63,5 +63,5 @@ Each button switches on automatically and opens in a new tab. The keys: `product
 ## Updating content
 
 - **Colors**: change `tokens.css` and the matching entries in `data.js`, then regenerate the downloads in `assets/downloads/`.
-- **Icons**: add the SVGs to `assets/icons/dark` and `assets/icons/white` with the same filename, then add a `[slug, label, tags]` row to `SC_ICONS` in `data.js`.
+- **Icons**: the four icon folders and zips are generated. Add the new icon's source SVGs (navy and white versions, any accent in Dodger `#0094FF`) to the studio icon source, run the icon build, then add a `[slug, label, tags]` row to `SC_ICONS` in `data.js` (and the slug to `SC_ICON_2COLOR` if it has an accent).
 - **Copy**: edit `index.html` directly. Section numbers live in the `.eyebrow` spans.

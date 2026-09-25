@@ -424,7 +424,7 @@
               </div>
               <h4 style="color:var(--text-strong);font-size:16px">Chart colors, in order</h4>
               <ul class="chart-row" id="chart-colors"></ul>
-              <p style="font-size:14px">No rainbow or traffic-light palettes. Retired: gold #FDC43C, logo gold #FFC332, lime #93D500, teal #00ADEE.</p>
+              <p style="font-size:14px">No rainbow or traffic-light palettes. Retired: gold #FDC43C, logo gold #FFC332, lime #93D500, teal #00ADEE and mint #54D6BE, plus any red or green accent.</p>
             </div>
           </div>
           <div class="subpanel">
@@ -521,7 +521,7 @@
         </button>
       </h2>
       <div class="section__body" id="iconography-panel" hidden="until-found">
-        <p class="lede">Iconography is used to aid and enhance short-form and graphic content layouts in PDF, PowerPoint and other assets. Use icons where they genuinely strengthen the copy. There are light and dark versions of the set, including new AI icons. Please refrain from using the previous yellow and tricolor icon styles.</p>
+        <p class="lede">Iconography is used to aid and enhance short-form and graphic content layouts in PDF, PowerPoint and other assets. Use icons where they genuinely strengthen the copy. The set comes in four categories: Dark and Light (one color, every icon), and Dark 2-color and Light 2-color (with a small Dodger accent, on the icons designed with one). It includes new AI icons. Please refrain from using the previous yellow and tricolor icon styles.</p>
 
         <div class="icon-tools">
           <div class="search">
@@ -530,8 +530,10 @@
             <input id="icon-search" type="search" placeholder="Search: cloud, AI, shield…" autocomplete="off">
           </div>
           <div class="seg" id="icon-variant" role="group" aria-label="Icon set">
-            <button type="button" data-variant="dark" aria-pressed="true">Dark icons</button>
-            <button type="button" data-variant="white" aria-pressed="false">White icons</button>
+            <button type="button" data-variant="dark" aria-pressed="true">Dark</button>
+            <button type="button" data-variant="light" aria-pressed="false">Light</button>
+            <button type="button" data-variant="dark-2color" aria-pressed="false">Dark 2-color</button>
+            <button type="button" data-variant="light-2color" aria-pressed="false">Light 2-color</button>
           </div>
           <span class="icon-count" id="icon-count" aria-live="polite"></span>
         </div>
@@ -542,19 +544,21 @@
         </div>
 
         <div class="row">
-          <a class="btn" href="assets/downloads/SmartCommunications_Icons_Dark.zip" download>Dark icons (.zip, 96 KB)</a>
-          <a class="btn" href="assets/downloads/SmartCommunications_Icons_White.zip" download>White icons (.zip, 96 KB)</a>
-          <a class="btn btn--ghost" href="assets/downloads/SmartCommunications_Icons_All.zip" download>Both sets (.zip, 199 KB)</a>
+          <a class="btn" href="assets/downloads/SmartCommunications_Icons_Dark.zip" download>Dark (.zip, 1.4 MB)</a>
+          <a class="btn" href="assets/downloads/SmartCommunications_Icons_Light.zip" download>Light (.zip, 1.4 MB)</a>
+          <a class="btn" href="assets/downloads/SmartCommunications_Icons_Dark_2-Color.zip" download>Dark 2-color (.zip, 0.4 MB)</a>
+          <a class="btn" href="assets/downloads/SmartCommunications_Icons_Light_2-Color.zip" download>Light 2-color (.zip, 0.4 MB)</a>
+          <a class="btn btn--ghost" href="assets/downloads/SmartCommunications_Icons_All.zip" download>All four (.zip, 3.6 MB)</a>
         </div>
 
         <div class="grid grid--2">
           <div class="card">
             <h3>Using icons</h3>
             <ul class="bullets bullets--tight">
-              <li>Monoline only. White on dark, dark on light.</li>
-              <li>Optional Dodger or UI Blue accent on about 20% of the mark.</li>
+              <li>Monoline only. Dark on light backgrounds, Light on dark ones.</li>
+              <li>2-color: one small Dodger #0094FF detail (a sparkle, a check or a highlight), never the main outline. Twenty icons are designed with one; use the one-color versions of the rest.</li>
               <li>PowerPoint: roughly 48–72 px on a 16:9 slide. Social: 88–128 px on a 1080 square.</li>
-              <li>New icons: 2 pt stroke, square caps, #326EEF with #0E2030 or white, no fills beyond a small accent.</li>
+              <li>New icons: match the set. 1.5 pt stroke, round caps and joins, Industry Darker #03102C on light backgrounds or white on dark, same optical size. At most one small Dodger detail.</li>
             </ul>
           </div>
           <div class="card">
@@ -855,14 +859,12 @@
 
 <dialog class="dialog" id="icon-dialog" aria-labelledby="icon-dialog-title">
   <button type="button" class="dialog__close" id="icon-dialog-close" aria-label="Close"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-  <div class="dialog__stage">
-    <div><img id="icon-dialog-dark" alt="Dark version preview" src=""></div>
-    <div><img id="icon-dialog-white" alt="White version preview" src=""></div>
-  </div>
+  <div class="dialog__stage" id="icon-dialog-stage"></div>
   <div class="dialog__body">
     <h3 id="icon-dialog-title"></h3>
     <p>File: <code id="icon-dialog-slug"></code> · PNG exports at 512 px with a transparent background.</p>
-    <div class="row" id="icon-dialog-actions"></div>
+    <p id="icon-dialog-note"></p>
+    <div class="dl-rows" id="icon-dialog-actions"></div>
   </div>
 </dialog>
 

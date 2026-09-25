@@ -273,22 +273,27 @@
     const count = $("#icon-count");
     const dialog = $("#icon-dialog");
     let variant = "dark";
+    const TWO = new Set(window.SC_ICON_2COLOR || []);
+    const VARIANTS = { "dark": "Dark", "light": "Light", "dark-2color": "Dark 2-color", "light-2color": "Light 2-color" };
+    const isLight = (v) => v.startsWith("light");
+    const has = (slug, v) => !v.endsWith("2color") || TWO.has(slug);
 
     const render = () => {
       const q = input.value.trim().toLowerCase();
-      const list = window.SC_ICONS.filter((i) => !q || `${i.slug} ${i.label} ${i.tags}`.toLowerCase().includes(q));
+      const pool = window.SC_ICONS.filter((i) => has(i.slug, variant));
+      const list = pool.filter((i) => !q || `${i.slug} ${i.label} ${i.tags}`.toLowerCase().includes(q));
       grid.innerHTML = list.map((i) => `
         <li><button type="button" class="icon-btn" data-slug="${i.slug}" aria-label="${i.label} — open download options">
           <img src="assets/icons/${variant}/${i.slug}.svg" alt="" loading="lazy" width="44" height="44">
           <span>${i.label}</span></button></li>`).join("") || "";
       $("#icon-empty").hidden = list.length > 0;
-      count.textContent = `${list.length} of ${window.SC_ICONS.length} icons`;
+      count.textContent = `${list.length} of ${pool.length} icons`;
     };
     input.addEventListener("input", render);
     $$("#icon-variant button").forEach((b) => b.addEventListener("click", () => {
       variant = b.dataset.variant;
       $$("#icon-variant button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
-      board.classList.toggle("is-dark", variant === "white");
+      board.classList.toggle("is-dark", isLight(variant));
       render();
     }));
     render();
@@ -299,11 +304,15 @@
       const icon = window.SC_ICONS.find((i) => i.slug === b.dataset.slug);
       $("#icon-dialog-title").textContent = icon.label;
       $("#icon-dialog-slug").textContent = icon.slug + ".svg";
-      $("#icon-dialog-dark").src = `assets/icons/dark/${icon.slug}.svg`;
-      $("#icon-dialog-white").src = `assets/icons/white/${icon.slug}.svg`;
-      $("#icon-dialog-actions").innerHTML = ["dark", "white"].map((v) => `
-        <a class="btn btn--sm" href="assets/icons/${v}/${icon.slug}.svg" download="SC_icon_${icon.slug}_${v}.svg">${v === "dark" ? "Dark" : "White"} SVG</a>
-        <button type="button" class="btn btn--sm btn--ghost" data-png="assets/icons/${v}/${icon.slug}.svg" data-filename="SC_icon_${icon.slug}_${v}.png" data-width="512">${v === "dark" ? "Dark" : "White"} PNG</button>`).join("");
+      const avail = Object.keys(VARIANTS).filter((v) => has(icon.slug, v));
+      $("#icon-dialog-stage").innerHTML = avail.map((v) => `
+        <div class="${isLight(v) ? "is-dark" : ""}"><img src="assets/icons/${v}/${icon.slug}.svg" alt="${VARIANTS[v]} version preview"></div>`).join("");
+      $("#icon-dialog-stage").dataset.count = avail.length;
+      $("#icon-dialog-note").textContent = TWO.has(icon.slug) ? "" : "One-color only: this icon has no designed accent.";
+      $("#icon-dialog-actions").innerHTML = avail.map((v) => `
+        <div class="dl-row"><span>${VARIANTS[v]}</span>
+          <a class="btn btn--sm" href="assets/icons/${v}/${icon.slug}.svg" download="SC_icon_${icon.slug}_${v}.svg" aria-label="${VARIANTS[v]} SVG">SVG</a>
+          <button type="button" class="btn btn--sm btn--ghost" data-png="assets/icons/${v}/${icon.slug}.svg" data-filename="SC_icon_${icon.slug}_${v}.png" data-width="512" aria-label="${VARIANTS[v]} PNG">PNG</button></div>`).join("");
       dialog.showModal();
     });
     $("#icon-dialog-close").addEventListener("click", () => dialog.close());

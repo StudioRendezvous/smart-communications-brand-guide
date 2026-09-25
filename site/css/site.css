@@ -545,12 +545,13 @@ main { display: block; }
 .search input:focus-visible { outline-offset: 0; border-color: var(--focus); }
 .search svg { position: absolute; left: 13px; top: 50%; width: 18px; height: 18px; transform: translateY(-50%); color: var(--text-muted); }
 
-.seg { display: inline-flex; padding: 3px; border-radius: var(--radius-btn); background: var(--sc-hawkes-light); }
+.seg { display: inline-flex; flex-wrap: wrap; padding: 3px; border-radius: var(--radius-btn); background: var(--sc-hawkes-light); }
 .seg button {
   border: 0; background: none; padding: 8px 14px; border-radius: 8px; cursor: pointer;
   font: 500 14px/18px var(--font-ui); color: var(--text-body);
 }
 .seg button[aria-pressed="true"] { background: #fff; color: var(--text-strong); box-shadow: 0 1px 2px rgba(3, 16, 44, 0.15); }
+@media (max-width: 560px) { #icon-variant { display: grid; grid-template-columns: 1fr 1fr; width: 100%; } }
 .icon-count { color: var(--text-muted); font-size: 14px; }
 
 .icon-board { border-radius: 20px; padding: 24px; border: 1px solid var(--line-accent); background: #fff; }
@@ -581,16 +582,21 @@ main { display: block; }
   box-shadow: var(--shadow-pop); color: var(--text-body);
 }
 .dialog::backdrop { background: rgba(3, 16, 44, 0.55); }
-.dialog__stage { display: grid; grid-template-columns: 1fr 1fr; }
-.dialog__stage div { display: grid; place-items: center; height: 180px; }
-.dialog__stage div:first-child { background: #fff; border-bottom: 1px solid var(--line-card); }
-.dialog__stage div:last-child { background: var(--sc-tiber); }
+.dialog__stage { display: grid; grid-template-columns: repeat(2, 1fr); }
+.dialog__stage[data-count="4"] { grid-template-columns: repeat(4, 1fr); }
+.dialog__stage div { display: grid; place-items: center; height: 180px; background: #fff; border-bottom: 1px solid var(--line-card); }
+.dialog__stage div.is-dark { background: var(--sc-tiber); border-color: var(--sc-tiber); }
+@media (max-width: 560px) { .dialog__stage[data-count="4"] { grid-template-columns: repeat(2, 1fr); } .dialog__stage div { height: 130px; } }
 .dialog__stage img { width: 96px; height: 96px; object-fit: contain; }
 .dialog__body { padding: 20px 24px 24px; }
 .dialog__body h3 { color: var(--text-strong); font: 700 22px/28px var(--font-ui); }
 .dialog__body code { font-size: 13px; background: var(--sc-hawkes-lighter); padding: 2px 6px; border-radius: 4px; color: var(--text-strong); }
 .dialog__body p { font-size: 14px; margin-top: 6px; }
 .dialog__body .row { margin-top: 16px; gap: 8px; }
+.dl-rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 20px; margin-top: 16px; }
+.dl-row { display: flex; align-items: center; gap: 8px; }
+.dl-row span { flex: 1; color: var(--text-strong); font: 500 14px/18px var(--font-ui); }
+@media (max-width: 560px) { .dl-rows { grid-template-columns: minmax(0, 1fr); } }
 .dialog__close {
   position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; border: 0; border-radius: 50%;
   background: rgba(255, 255, 255, 0.92); cursor: pointer; display: grid; place-items: center;
