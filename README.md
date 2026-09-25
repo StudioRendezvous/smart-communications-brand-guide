@@ -1,5 +1,7 @@
 # SMART Brand Guide — website
 
+**Review build:** https://studiorendezvous.github.io/smart-communications-brand-guide/
+
 A single-page brand guide for Smart Communications, built from the Figma **01b Brand Guide Layout** page (the design system) and the 2026 brand execution kit (the source of every color, name and rule).
 
 Plain HTML, CSS and JavaScript. No build step and no dependencies, so it can be hosted anywhere static files can go: GitHub Pages, Railway, Netlify, SharePoint or an intranet server.
@@ -43,9 +45,9 @@ Each button switches on automatically and opens in a new tab. The keys: `product
 ## Before going live
 
 1. Add the SharePoint URLs (above).
-2. In `site/index.html`, make `og:image` an absolute URL (for example `https://brand.smartcommunications.com/assets/og-image.jpg`) so link previews work in Teams, Slack and email.
+2. If the site moves to its own domain, update `og:image` and `og:url` in `site/index.html` so link previews keep working in Teams, Slack and email.
 3. Remove the `<meta name="robots" content="noindex, nofollow">` line if the guide should be public. It's there so review builds stay out of search engines.
-4. Deploy the `site/` folder as the web root.
+4. Deploy the `site/` folder as the web root. On GitHub this happens automatically on every push to `main` (`.github/workflows/pages.yml`).
 
 ## Features
 
