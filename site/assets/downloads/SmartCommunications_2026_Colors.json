@@ -56,5 +56,374 @@
     "White": "#FFFFFF",
     "Glass": "#EAF2FF"
   },
-  "notes": "No yellow/gold. Regal is a text color, not a seventh brand color."
+  "notes": "No yellow/gold. Regal is a text color, not a seventh brand color.",
+  "print": {
+    "about": "CMYK values are straight conversions from the screen colors, as listed in the brand Figma (for reference, not a press profile). PMS values are the closest PANTONE+ Solid Coated matches by CIEDE2000; confirm both against a drawdown with the printer.",
+    "colors": {
+      "#001F6D": {
+        "cmyk": {
+          "C": 100,
+          "M": 72,
+          "Y": 0,
+          "K": 57
+        },
+        "pms_coated": "2756 C",
+        "delta_e": 0.9
+      },
+      "#1344C1": {
+        "cmyk": {
+          "C": 90,
+          "M": 65,
+          "Y": 0,
+          "K": 24
+        },
+        "pms_coated": "2126 C",
+        "delta_e": 3.6
+      },
+      "#326EEF": {
+        "cmyk": {
+          "C": 79,
+          "M": 54,
+          "Y": 0,
+          "K": 6
+        },
+        "pms_coated": "2130 C",
+        "delta_e": 3.7
+      },
+      "#90B1F4": {
+        "cmyk": {
+          "C": 41,
+          "M": 27,
+          "Y": 0,
+          "K": 4
+        },
+        "pms_coated": "2128 C",
+        "delta_e": 2.5
+      },
+      "#D6E2FC": {
+        "cmyk": {
+          "C": 15,
+          "M": 10,
+          "Y": 0,
+          "K": 1
+        },
+        "pms_coated": "2706 C",
+        "delta_e": 3.4
+      },
+      "#38009F": {
+        "cmyk": {
+          "C": 65,
+          "M": 100,
+          "Y": 0,
+          "K": 38
+        },
+        "pms_coated": "Violet C",
+        "delta_e": 2.5
+      },
+      "#661DEE": {
+        "cmyk": {
+          "C": 57,
+          "M": 88,
+          "Y": 0,
+          "K": 7
+        },
+        "pms_coated": "2090 C",
+        "delta_e": 7.5,
+        "match": "loose"
+      },
+      "#9963FD": {
+        "cmyk": {
+          "C": 40,
+          "M": 61,
+          "Y": 0,
+          "K": 1
+        },
+        "pms_coated": "265 C",
+        "delta_e": 7.0,
+        "match": "loose"
+      },
+      "#BE9DFA": {
+        "cmyk": {
+          "C": 24,
+          "M": 37,
+          "Y": 0,
+          "K": 2
+        },
+        "pms_coated": "2645 C",
+        "delta_e": 5.2
+      },
+      "#D9C9F7": {
+        "cmyk": {
+          "C": 12,
+          "M": 19,
+          "Y": 0,
+          "K": 3
+        },
+        "pms_coated": "263 C",
+        "delta_e": 4.2
+      },
+      "#003154": {
+        "cmyk": {
+          "C": 100,
+          "M": 42,
+          "Y": 0,
+          "K": 67
+        },
+        "pms_coated": "648 C",
+        "delta_e": 2.9
+      },
+      "#0062A8": {
+        "cmyk": {
+          "C": 100,
+          "M": 42,
+          "Y": 0,
+          "K": 34
+        },
+        "pms_coated": "3506 C",
+        "delta_e": 1.4
+      },
+      "#0094FF": {
+        "cmyk": {
+          "C": 100,
+          "M": 42,
+          "Y": 0,
+          "K": 0
+        },
+        "pms_coated": "279 C",
+        "delta_e": 3.5
+      },
+      "#57B8FF": {
+        "cmyk": {
+          "C": 66,
+          "M": 28,
+          "Y": 0,
+          "K": 0
+        },
+        "pms_coated": "292 C",
+        "delta_e": 3.4
+      },
+      "#ABDCFF": {
+        "cmyk": {
+          "C": 33,
+          "M": 14,
+          "Y": 0,
+          "K": 0
+        },
+        "pms_coated": "291 C",
+        "delta_e": 4.4
+      },
+      "#03102C": {
+        "cmyk": {
+          "C": 93,
+          "M": 64,
+          "Y": 0,
+          "K": 83
+        },
+        "pms_coated": "282 C",
+        "delta_e": 5.7
+      },
+      "#072057": {
+        "cmyk": {
+          "C": 92,
+          "M": 63,
+          "Y": 0,
+          "K": 66
+        },
+        "pms_coated": "2758 C",
+        "delta_e": 2.3
+      },
+      "#0A3184": {
+        "cmyk": {
+          "C": 93,
+          "M": 63,
+          "Y": 0,
+          "K": 48
+        },
+        "pms_coated": "3597 C",
+        "delta_e": 2.8
+      },
+      "#5D77AE": {
+        "cmyk": {
+          "C": 47,
+          "M": 32,
+          "Y": 0,
+          "K": 32
+        },
+        "pms_coated": "7456 C",
+        "delta_e": 3.8
+      },
+      "#2C3751": {
+        "cmyk": {
+          "C": 46,
+          "M": 32,
+          "Y": 0,
+          "K": 68
+        },
+        "pms_coated": "2380 C",
+        "delta_e": 2.2
+      },
+      "#576FA2": {
+        "cmyk": {
+          "C": 46,
+          "M": 31,
+          "Y": 0,
+          "K": 36
+        },
+        "pms_coated": "7456 C",
+        "delta_e": 2.9
+      },
+      "#84A8F5": {
+        "cmyk": {
+          "C": 46,
+          "M": 31,
+          "Y": 0,
+          "K": 4
+        },
+        "pms_coated": "7451 C",
+        "delta_e": 2.0
+      },
+      "#AEC6F8": {
+        "cmyk": {
+          "C": 30,
+          "M": 20,
+          "Y": 0,
+          "K": 3
+        },
+        "pms_coated": "2717 C",
+        "delta_e": 3.1
+      },
+      "#45494E": {
+        "cmyk": {
+          "C": 12,
+          "M": 6,
+          "Y": 0,
+          "K": 69
+        },
+        "pms_coated": "7540 C",
+        "delta_e": 2.1
+      },
+      "#89939C": {
+        "cmyk": {
+          "C": 12,
+          "M": 6,
+          "Y": 0,
+          "K": 39
+        },
+        "pms_coated": "423 C",
+        "delta_e": 4.3
+      },
+      "#D0DEEC": {
+        "cmyk": {
+          "C": 12,
+          "M": 6,
+          "Y": 0,
+          "K": 8
+        },
+        "pms_coated": "642 C",
+        "delta_e": 1.3
+      },
+      "#E0E9F2": {
+        "cmyk": {
+          "C": 7,
+          "M": 4,
+          "Y": 0,
+          "K": 5
+        },
+        "pms_coated": "656 C",
+        "delta_e": 1.1
+      },
+      "#EFF4F9": {
+        "cmyk": {
+          "C": 4,
+          "M": 2,
+          "Y": 0,
+          "K": 2
+        },
+        "pms_coated": "656 C",
+        "delta_e": 4.4
+      },
+      "#08131D": {
+        "cmyk": {
+          "C": 72,
+          "M": 34,
+          "Y": 0,
+          "K": 88
+        },
+        "pms_coated": "Black 6 C",
+        "delta_e": 1.6
+      },
+      "#10263A": {
+        "cmyk": {
+          "C": 72,
+          "M": 34,
+          "Y": 0,
+          "K": 77
+        },
+        "pms_coated": "539 C",
+        "delta_e": 3.9
+      },
+      "#183958": {
+        "cmyk": {
+          "C": 73,
+          "M": 35,
+          "Y": 0,
+          "K": 65
+        },
+        "pms_coated": "534 C",
+        "delta_e": 3.5
+      },
+      "#677C91": {
+        "cmyk": {
+          "C": 29,
+          "M": 14,
+          "Y": 0,
+          "K": 43
+        },
+        "pms_coated": "2165 C",
+        "delta_e": 2.2
+      },
+      "#B3BEC8": {
+        "cmyk": {
+          "C": 11,
+          "M": 5,
+          "Y": 0,
+          "K": 22
+        },
+        "pms_coated": "428 C",
+        "delta_e": 3.5
+      },
+      "#0E2030": {
+        "cmyk": {
+          "C": 71,
+          "M": 33,
+          "Y": 0,
+          "K": 81
+        },
+        "pms_coated": "296 C",
+        "delta_e": 2.7
+      },
+      "#FFFFFF": {
+        "cmyk": {
+          "C": 0,
+          "M": 0,
+          "Y": 0,
+          "K": 0
+        },
+        "pms_coated": null,
+        "delta_e": null,
+        "note": "Paper white"
+      },
+      "#EAF2FF": {
+        "cmyk": {
+          "C": 8,
+          "M": 5,
+          "Y": 0,
+          "K": 0
+        },
+        "pms_coated": null,
+        "delta_e": null,
+        "note": "Digital only"
+      }
+    }
+  }
 }

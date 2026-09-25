@@ -419,10 +419,11 @@ main { display: block; }
 .swatch:hover .swatch__copy, .swatch:focus-visible .swatch__copy { opacity: 1; }
 .swatch__hex { margin-top: 8px; color: var(--text-strong); font: 700 14px/18px var(--font-ui); }
 .swatch__rgb { color: var(--text-muted); font-size: 12px; line-height: 16px; }
+.swatch__rgb em { font-style: normal; color: var(--text-muted); }
 @media (max-width: 700px) {
   .ramp { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .swatch { display: grid; grid-template-columns: 112px minmax(0, 1fr); column-gap: 14px; align-content: center; }
-  .swatch__chip { grid-row: 1 / span 3; height: 52px; }
+  .swatch__chip { grid-row: 1 / span 5; height: 52px; }
   .swatch__hex { margin-top: 0; align-self: end; }
 }
 
@@ -456,6 +457,7 @@ main { display: block; }
 .gradient-tile {
   display: flex; align-items: flex-end; min-height: 130px; padding: 16px; border-radius: var(--radius-panel);
 }
+.gradient-tile--wide { grid-column: 1 / -1; }
 .gradient-tile span {
   padding: 5px 9px; border-radius: 5px; background: rgba(3, 16, 44, 0.72); color: #fff;
   font: 500 13px/18px var(--font-ui);

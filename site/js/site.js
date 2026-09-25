@@ -126,6 +126,17 @@
   const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
   const inkFor = (hex) => (ratio("#FFFFFF", hex) >= ratio("#0E2030", hex) ? "#FFFFFF" : "#0E2030");
 
+  // CMYK + closest PMS (Solid Coated) under each swatch, from SC_PRINT in data.js
+  function printLines(hex) {
+    const p = (window.SC_PRINT || {})[hex.toUpperCase()];
+    if (!p) return "";
+    const cmyk = `<span class="swatch__rgb">CMYK ${p.cmyk.join(" ")}</span>`;
+    const pms = p.pms
+      ? `<span class="swatch__rgb">PMS ${p.pms}${p.de > 6 ? " <em>(loose match)</em>" : ""}</span>`
+      : `<span class="swatch__rgb">PMS — ${p.note.toLowerCase()}</span>`;
+    return cmyk + pms;
+  }
+
   function swatch(name, step, hex, isDefault) {
     const li = document.createElement("li");
     const ink = inkFor(hex);
@@ -138,6 +149,7 @@
         </span>
         <span class="swatch__hex">${hex}</span>
         <span class="swatch__rgb">RGB ${rgb(hex).join(", ")}</span>
+        ${printLines(hex)}
       </button>`;
     return li;
   }

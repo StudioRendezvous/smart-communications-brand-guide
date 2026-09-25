@@ -97,6 +97,7 @@
   --grad-secondary: linear-gradient(90deg, #0094FF 0%, #0E2030 100%);
   --grad-product: radial-gradient(120% 140% at 50% 0%, #FFFFFF 0%, #326EEF 32%, #0E2030 72%);
   --grad-light: linear-gradient(90deg, rgba(0, 148, 255, 0.75) 0%, #FFFFFF 100%);
+  --grad-slide: linear-gradient(135deg, #326EEF 0%, #0A3184 55%, #03102C 100%);
   --grad-hero: radial-gradient(1100px 190px at 53% 105%, #FFFFFF 9%, #CCDBFB 15%, #6592F3 26%, #326EEF 32%, #20478F 50%, #173460 75%, #0E2030 100%);
 }
 

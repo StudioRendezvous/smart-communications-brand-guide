@@ -351,7 +351,7 @@
         </button>
       </h2>
       <div class="section__body" id="color-panel" hidden="until-found">
-        <p class="lede">Six families build the SMART palette, each with a light-to-dark tint ramp. They split between bright highlight colors and darker background colors. HEX and RGB values are exact. <strong>Click any swatch to copy its HEX code.</strong></p>
+        <p class="lede">Six families build the SMART palette, each with a light-to-dark tint ramp. They split between bright highlight colors and darker background colors. HEX and RGB values are exact. CMYK values are straight conversions for reference, and PMS values are the closest PANTONE+ Solid Coated matches; confirm both with your printer against a drawdown. <strong>Click any swatch to copy its HEX code.</strong></p>
 
         <div class="card" id="palette"></div>
 
@@ -380,8 +380,9 @@
             <h3><button type="button" class="subpanel__toggle" data-toggle="sub" aria-expanded="false" aria-controls="sp-gradients">Background gradients <span class="dot" aria-hidden="true">
               <svg viewBox="0 0 20 20"><path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></h3>
             <div class="subpanel__body" id="sp-gradients" hidden="until-found">
-              <p>For digital and video. Sales PowerPoint uses solid Industry Darker, Industry Dark or white instead.</p>
+              <p>Sales PowerPoint uses only the Slide gradient, for side panels, speaker bands, stat cards and highlighted cards. The other four are for digital, video and social.</p>
               <div class="grid grid--2">
+                <div class="gradient-tile gradient-tile--wide" style="background:var(--grad-slide)"><span>Slide · UI Blue #326EEF → Industry Darker #03102C</span></div>
                 <div class="gradient-tile" style="background:var(--grad-primary)"><span>Primary · Industry Blue #0A3184 → Tiber #0E2030</span></div>
                 <div class="gradient-tile" style="background:var(--grad-secondary)"><span>Secondary · Dodger Blue #0094FF → Tiber #0E2030</span></div>
                 <div class="gradient-tile" style="background:var(--grad-product)"><span>Product · Radial · White #FFFFFF → UI Blue #326EEF → Tiber #0E2030</span></div>
@@ -417,7 +418,7 @@
                     <tr><td>Website + product UI</td><td><i style="background:#326EEF"></i>UI Blue #326EEF — buttons, links</td><td>White, Hawkes Lighter</td></tr>
                     <tr><td>Digital PDF / eBook</td><td><i style="background:#326EEF"></i>UI Blue #326EEF</td><td>Gradients, rounded cards, glass</td></tr>
                     <tr><td>Social tiles</td><td><i style="background:#0094FF"></i>Dodger eyebrows + stats · UI Blue pills</td><td>Same digital chrome, one idea</td></tr>
-                    <tr><td>Sales PowerPoint</td><td><i style="background:#0094FF"></i>Dodger Blue #0094FF</td><td>Solid Industry navy or white</td></tr>
+                    <tr><td>Sales PowerPoint</td><td><i style="background:#326EEF"></i>UI Blue details · Dodger for stats on dark</td><td>Tiber #0E2030 or white, one Slide gradient, sharp diagonals</td></tr>
                   </tbody>
                 </table>
               </div>
