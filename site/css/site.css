@@ -690,3 +690,27 @@ main { display: block; }
   .section__state { display: none; }
   .hero { background: var(--sc-tiber); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
+
+/* ---- Innovate 26 ------------------------------------------------------------------------------------------ */
+.inv-logo { margin: 0; background: #fff; border: 1px solid var(--line-card); border-radius: var(--radius-panel); overflow: hidden; }
+.inv-logo__stage { display: grid; place-items: center; height: 200px; padding: 24px; }
+.inv-logo__stage img { width: min(300px, 80%); height: auto; }
+.inv-logo--dark .inv-logo__stage { background: var(--sc-tiber); }
+.inv-logo figcaption { padding: 14px 20px 0; font-size: 14px; color: var(--text-muted); }
+.inv-logo figcaption strong { color: var(--text-strong); }
+.inv-logo__actions { padding: 10px 20px 18px; gap: 8px; }
+.inv-subhead { margin-top: 32px; color: var(--text-strong); font: 700 20px/28px var(--font-ui); }
+.inv-note { margin-top: 6px; font-size: 14px; color: var(--text-muted); max-width: 820px; }
+.inv-colors { margin-top: 16px; }
+.inv-chip span { display: block; height: 72px; border-radius: var(--radius-tile); box-shadow: inset 0 0 0 1px rgba(3, 16, 44, 0.08); }
+.inv-chip h4 { margin-top: 10px; color: var(--text-strong); font: 700 15px/20px var(--font-ui); }
+.inv-chip p { font-size: 13px; line-height: 18px; color: var(--text-muted); }
+.inv-apps { margin-top: 8px; }
+.inv-app { display: flex; flex-direction: column; gap: 6px; }
+.inv-app__media { position: relative; display: block; aspect-ratio: 4 / 3; border-radius: var(--radius-tile); background: var(--sc-hawkes-lighter); overflow: hidden; }
+.inv-app__media img { position: absolute; inset: 12px; width: calc(100% - 24px); height: calc(100% - 24px); max-width: none; object-fit: contain; border-radius: 0; }
+.inv-app__media:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.inv-app h3 { margin-top: 8px; color: var(--text-strong); font: 700 17px/24px var(--font-ui); }
+.inv-app p { font-size: 14px; line-height: 20px; }
+.inv-app__spec { color: var(--text-muted); font-size: 13px !important; }
+.inv-app__actions { margin-top: auto; padding-top: 8px; gap: 8px; }

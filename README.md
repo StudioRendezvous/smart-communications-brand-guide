@@ -26,6 +26,7 @@ Then open http://localhost:4180. The dev server turns off caching so edits show 
 | `site/assets/logos/` | Approved SVG logos (company, products, tagline, Conversation Cloud) |
 | `site/assets/png-logos/` | 2000 px transparent PNGs of each logo |
 | `site/assets/icons/{dark,light,dark-2color,light-2color}/` | The 68 monoline icons in four categories (2-color sets hold the 20 icons with a Dodger accent) |
+| `site/assets/innovate/` | Innovate 26 event identity: vector logos (rebuilt from the final print PDFs) and web-sized previews of the event applications. Print-ready files are linked from SharePoint (`innovatePrintFiles` in `SC_LINKS`). |
 | `site/assets/downloads/` | Logo pack, icon packs, 2026 swatches (.ase), CSS + JSON tokens |
 | `tools/serve.py` | Local preview server |
 

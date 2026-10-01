@@ -17,7 +17,8 @@ window.SC_LINKS = {
   guideMarketo: null,
   guideAsana: null,
   guide6Sense: null,
-  proximaFonts: null
+  proximaFonts: null,
+  innovatePrintFiles: null
 };
 
 // Print values. CMYK: straight conversions from the screen colors (as listed in the brand Figma).
