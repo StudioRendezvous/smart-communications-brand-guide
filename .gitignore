@@ -6,3 +6,6 @@ handoff/
 studio/
 dist/
 .cursor/
+
+# Office lock files
+~$*
