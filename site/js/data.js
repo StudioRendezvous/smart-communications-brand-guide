@@ -65,10 +65,11 @@ window.SC_COLORS = {
   ],
   chart: [
     { name: "Dodger", hex: "#0094FF" },
+    { name: "Indigo Dark", hex: "#661DEE" },
     { name: "Dodger Light", hex: "#57B8FF" },
-    { name: "Maya", hex: "#84A8F5" },
-    { name: "Industry", hex: "#0A3184" },
-    { name: "Hawkes", hex: "#D0DEEC" }
+    { name: "UI Blue Dark", hex: "#1344C1" },
+    { name: "Indigo Light", hex: "#BE9DFA" },
+    { name: "Dodger Dark", hex: "#0062A8" }
   ],
   /* Text/background pairs people actually reach for. Ratios are computed live. */
   pairs: [
