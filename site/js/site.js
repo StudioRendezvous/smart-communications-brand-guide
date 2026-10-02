@@ -49,10 +49,11 @@
   toggles.forEach((b) => b.addEventListener("click", syncAllBtn));
 
   /* Open the section a link points at (nav, deep link, in-page links). */
-  function reveal(id, scroll) {
+  function reveal(id, scroll, behavior) {
     const target = document.getElementById(id);
     if (!target) return;
-    const btn = $('[data-toggle="section"]', target);
+    // a section opens itself; a row inside a section (Templates, Innovate26) opens itself too
+    const btn = target.classList.contains("subpanel") ? $('[data-toggle="sub"]', target) : $('[data-toggle="section"]', target);
     if (btn && btn.getAttribute("aria-expanded") !== "true") setOpen(btn, true);
     for (let el = target; el; el = el.parentElement) {
       if (el.hasAttribute("hidden")) {
@@ -61,7 +62,7 @@
       }
     }
     syncAllBtn();
-    if (scroll) target.scrollIntoView({ block: "start" });
+    if (scroll) target.scrollIntoView({ block: "start", behavior: behavior || "auto" });
   }
   document.addEventListener("click", (e) => {
     const a = e.target.closest('a[href^="#"]');
@@ -73,7 +74,12 @@
     history.pushState(null, "", "#" + id);
   });
   window.addEventListener("hashchange", () => reveal(location.hash.slice(1), true));
-  if (location.hash.length > 1) requestAnimationFrame(() => reveal(location.hash.slice(1), true));
+  if (location.hash.length > 1) {
+    requestAnimationFrame(() => reveal(location.hash.slice(1), true, "instant"));
+    // the browser's own jump-to-anchor can land after the first pass; settle once the page has loaded
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    window.addEventListener("load", () => setTimeout(() => reveal(location.hash.slice(1), true, "instant"), 60), { once: true });
+  }
 
   /* ---- Nav: stuck state + scroll spy ---------------------------------------------------- */
   const nav = $(".topnav");

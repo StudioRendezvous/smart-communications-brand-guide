@@ -726,3 +726,7 @@ main { display: block; }
 .inv-lockup--dark .inv-lockup__stage { background: var(--sc-tiber); }
 .inv-lockup figcaption { display: flex; flex-direction: column; gap: 2px; padding: 10px 14px 12px; font-size: 13px; color: var(--text-strong); font-weight: 500; }
 .inv-lockup figcaption span { color: var(--text-muted); font-weight: 400; }
+
+/* Sections that group several items as expandable rows (Templates, Innovate26) */
+.subpanels { margin-top: 20px; }
+.sub-lede { margin-bottom: 18px; font-size: 16px; line-height: 24px; color: var(--text-body); }
