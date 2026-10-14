@@ -719,6 +719,10 @@ main { display: block; }
 .xl-tpl { align-items: center; }
 .xl-tpl > img { display: block; width: 100%; height: auto; border-radius: var(--radius-tile); border: 1px solid var(--line-card); }
 .xl-tpl .row { margin-top: 12px; gap: 8px; }
+.xl-subhead { margin: 28px 0 6px; font-size: 18px; color: var(--text-strong); }
+.xl-subhead:first-child { margin-top: 4px; }
+.xl-books .resource > img { display: block; width: 100%; height: auto; margin-bottom: 16px; border-radius: var(--radius-tile); border: 1px solid var(--line-card); }
+.xl-books .row { margin-top: 12px; gap: 8px; }
 .inv-lockups { margin-top: 14px; gap: 14px; }
 .inv-lockup { margin: 0; background: #fff; border: 1px solid var(--line-card); border-radius: var(--radius-tile); overflow: hidden; }
 .inv-lockup__stage { display: grid; place-items: center; height: 130px; padding: 18px; }
