@@ -1,12 +1,12 @@
 """Local preview server for the brand site. Sends no-cache headers so edits show on reload.
-Usage: python3 tools/serve.py [port]   (serves ./site)"""
+Usage: python3 tools/serve.py [port] [folder]   (serves ./site unless a folder is given)"""
 import functools
 import http.server
 import os
 import sys
 
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 4180
-ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "site")
+ROOT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "site")
 
 
 class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
