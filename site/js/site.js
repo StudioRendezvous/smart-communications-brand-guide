@@ -24,11 +24,13 @@
     const label = btn.querySelector("[data-state]");
     if (label) label.textContent = open ? "Hide" : "Show";
   }
+  let reviewing = false;   // review mode (below): every section open and locked
   const toggles = $$("[data-toggle]");
   toggles.forEach((btn) => {
     const panel = document.getElementById(btn.getAttribute("aria-controls"));
     setOpen(btn, btn.getAttribute("aria-expanded") === "true");
     btn.addEventListener("click", () => {
+      if (reviewing) return;
       const open = btn.getAttribute("aria-expanded") !== "true";
       setOpen(btn, open);
       if (open && btn.dataset.toggle === "section") history.replaceState(null, "", "#" + btn.closest("[id]").id);
@@ -47,6 +49,35 @@
     syncAllBtn();
   });
   toggles.forEach((b) => b.addEventListener("click", syncAllBtn));
+
+  /* Review mode. BugHerd pins a comment to the element it was left on; if that element sits in a closed section,
+     the pin lands on the section header instead. So while BugHerd is on the page (a reviewer's extension, or the
+     ?review=1 snippet) every section opens and stays open. It lasts for the browser tab; ?review=0 ends it. */
+  function startReview() {
+    if (reviewing) return;
+    reviewing = true;
+    try { sessionStorage.setItem("sc-review-open", "1"); } catch (e) {}
+    document.documentElement.classList.add("is-review");
+    toggles.forEach((b) => setOpen(b, true));
+    const note = document.createElement("div");
+    note.className = "review-bar";
+    note.setAttribute("role", "note");
+    note.textContent = "Review mode: every section stays open, so comments stay pinned where you leave them.";
+    document.body.prepend(note);
+  }
+  const hasBugHerd = () => !!document.querySelector('[id*="bugherd" i]');
+  let reviewOn = /[?&]review=1(&|$)/.test(location.search);
+  try {
+    if (/[?&]review=0(&|$)/.test(location.search)) sessionStorage.removeItem("sc-review-open");
+    else reviewOn = reviewOn || sessionStorage.getItem("sc-review-open") === "1";
+  } catch (e) {}
+  if (reviewOn || hasBugHerd()) startReview();
+  else {
+    // the extension adds its frame after the page loads; stop watching after a while for everyone else
+    const watch = new MutationObserver(() => { if (hasBugHerd()) { watch.disconnect(); startReview(); } });
+    watch.observe(document.documentElement, { childList: true, subtree: true });
+    setTimeout(() => watch.disconnect(), 30000);
+  }
 
   /* Open the section a link points at (nav, deep link, in-page links). */
   function reveal(id, scroll, behavior) {

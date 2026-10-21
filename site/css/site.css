@@ -738,3 +738,8 @@ main { display: block; }
 .inv-app__media--wide img { inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .inv-type { margin: 18px 0 0; border-radius: var(--radius-tile); overflow: hidden; background: var(--sc-tiber); }
 .inv-type img { display: block; width: 100%; height: auto; }
+
+/* Review mode (site.js): sections open and locked while BugHerd is on the page */
+.review-bar { background: var(--sc-tiber); color: #fff; font: 500 14px/20px var(--font-ui); padding: 10px 16px; text-align: center; }
+.is-review [data-toggle] { cursor: default; }
+.is-review #toggle-all, .is-review .section__state, .is-review .subpanel__toggle .dot { display: none; }
