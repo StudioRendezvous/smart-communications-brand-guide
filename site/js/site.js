@@ -102,6 +102,31 @@
   window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   onScroll();
 
+  // When the menu is wider than the window it scrolls sideways: show a fade and an arrow on the side with more
+  const navScroll = $(".topnav__scroll");
+  const navList = $(".topnav ol");
+  const navEdges = () => {
+    const max = navList.scrollWidth - navList.clientWidth;
+    navScroll.classList.toggle("more-prev", navList.scrollLeft > 2);
+    navScroll.classList.toggle("more-next", navList.scrollLeft < max - 2);
+  };
+  navList.addEventListener("scroll", navEdges, { passive: true });
+  window.addEventListener("resize", navEdges);
+  if (document.fonts) document.fonts.ready.then(navEdges);
+  navEdges();
+  $$(".topnav__more").forEach((b) => b.addEventListener("click", () => {
+    const dir = b.classList.contains("topnav__more--next") ? 1 : -1;
+    navList.scrollBy({ left: dir * navList.clientWidth * 0.6 });
+  }));
+  // keep the current section's link in view
+  new MutationObserver(() => {
+    const a = $(".topnav ol a[aria-current]");
+    if (!a || navList.scrollWidth <= navList.clientWidth) return;
+    const li = a.parentElement;
+    if (li.offsetLeft < navList.scrollLeft + 40 || li.offsetLeft + li.offsetWidth > navList.scrollLeft + navList.clientWidth - 40)
+      navList.scrollTo({ left: li.offsetLeft - navList.clientWidth / 2 + li.offsetWidth / 2 });
+  }).observe(navList, { subtree: true, attributeFilter: ["aria-current"] });
+
   /* ---- Clipboard --------------------------------------------------------------------------- */
   function legacyCopy(text) {
     const ta = document.createElement("textarea");
