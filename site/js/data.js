@@ -17,13 +17,12 @@ window.SC_LINKS = {
   guideMarketo: null,
   guideAsana: null,
   guide6Sense: null,
-  proximaFonts: null,
-  innovatePrintFiles: null
+  proximaFonts: null
 };
 
 // Print values. CMYK: straight conversions from the screen colors (as listed in the brand Figma).
-// PMS: closest PANTONE+ Solid Coated match by CIEDE2000 (de). Confirm both with the printer.
-window.SC_PRINT = {"#001F6D":{"cmyk":[100,72,0,57],"pms":"2756 C","de":0.9,"note":null},"#1344C1":{"cmyk":[90,65,0,24],"pms":"2126 C","de":3.6,"note":null},"#326EEF":{"cmyk":[79,54,0,6],"pms":"2130 C","de":3.7,"note":null},"#90B1F4":{"cmyk":[41,27,0,4],"pms":"2128 C","de":2.5,"note":null},"#D6E2FC":{"cmyk":[15,10,0,1],"pms":"2706 C","de":3.4,"note":null},"#38009F":{"cmyk":[65,100,0,38],"pms":"Violet C","de":2.5,"note":null},"#661DEE":{"cmyk":[57,88,0,7],"pms":"2090 C","de":7.5,"note":null},"#9963FD":{"cmyk":[40,61,0,1],"pms":"265 C","de":7.0,"note":null},"#BE9DFA":{"cmyk":[24,37,0,2],"pms":"2645 C","de":5.2,"note":null},"#D9C9F7":{"cmyk":[12,19,0,3],"pms":"263 C","de":4.2,"note":null},"#003154":{"cmyk":[100,42,0,67],"pms":"648 C","de":2.9,"note":null},"#0062A8":{"cmyk":[100,42,0,34],"pms":"3506 C","de":1.4,"note":null},"#0094FF":{"cmyk":[100,42,0,0],"pms":"279 C","de":3.5,"note":null},"#57B8FF":{"cmyk":[66,28,0,0],"pms":"292 C","de":3.4,"note":null},"#ABDCFF":{"cmyk":[33,14,0,0],"pms":"291 C","de":4.4,"note":null},"#03102C":{"cmyk":[93,64,0,83],"pms":"282 C","de":5.7,"note":null},"#072057":{"cmyk":[92,63,0,66],"pms":"2758 C","de":2.3,"note":null},"#0A3184":{"cmyk":[93,63,0,48],"pms":"3597 C","de":2.8,"note":null},"#5D77AE":{"cmyk":[47,32,0,32],"pms":"7456 C","de":3.8,"note":null},"#2C3751":{"cmyk":[46,32,0,68],"pms":"2380 C","de":2.2,"note":null},"#576FA2":{"cmyk":[46,31,0,36],"pms":"7456 C","de":2.9,"note":null},"#84A8F5":{"cmyk":[46,31,0,4],"pms":"7451 C","de":2.0,"note":null},"#AEC6F8":{"cmyk":[30,20,0,3],"pms":"2717 C","de":3.1,"note":null},"#45494E":{"cmyk":[12,6,0,69],"pms":"7540 C","de":2.1,"note":null},"#89939C":{"cmyk":[12,6,0,39],"pms":"423 C","de":4.3,"note":null},"#D0DEEC":{"cmyk":[12,6,0,8],"pms":"642 C","de":1.3,"note":null},"#E0E9F2":{"cmyk":[7,4,0,5],"pms":"656 C","de":1.1,"note":null},"#EFF4F9":{"cmyk":[4,2,0,2],"pms":"656 C","de":4.4,"note":null},"#08131D":{"cmyk":[72,34,0,88],"pms":"Black 6 C","de":1.6,"note":null},"#10263A":{"cmyk":[72,34,0,77],"pms":"539 C","de":3.9,"note":null},"#183958":{"cmyk":[73,35,0,65],"pms":"534 C","de":3.5,"note":null},"#677C91":{"cmyk":[29,14,0,43],"pms":"2165 C","de":2.2,"note":null},"#B3BEC8":{"cmyk":[11,5,0,22],"pms":"428 C","de":3.5,"note":null},"#0E2030":{"cmyk":[71,33,0,81],"pms":"296 C","de":2.7,"note":null},"#FFFFFF":{"cmyk":[0,0,0,0],"pms":null,"de":7.2,"note":"Paper white"},"#EAF2FF":{"cmyk":[8,5,0,0],"pms":null,"de":3.5,"note":"Digital only"}};
+// Confirm with the printer.
+window.SC_PRINT = {"#001F6D":{"cmyk":[100,72,0,57],"note":null},"#1344C1":{"cmyk":[90,65,0,24],"note":null},"#326EEF":{"cmyk":[79,54,0,6],"note":null},"#90B1F4":{"cmyk":[41,27,0,4],"note":null},"#D6E2FC":{"cmyk":[15,10,0,1],"note":null},"#38009F":{"cmyk":[65,100,0,38],"note":null},"#661DEE":{"cmyk":[57,88,0,7],"note":null},"#9963FD":{"cmyk":[40,61,0,1],"note":null},"#BE9DFA":{"cmyk":[24,37,0,2],"note":null},"#D9C9F7":{"cmyk":[12,19,0,3],"note":null},"#003154":{"cmyk":[100,42,0,67],"note":null},"#0062A8":{"cmyk":[100,42,0,34],"note":null},"#0094FF":{"cmyk":[100,42,0,0],"note":null},"#57B8FF":{"cmyk":[66,28,0,0],"note":null},"#ABDCFF":{"cmyk":[33,14,0,0],"note":null},"#03102C":{"cmyk":[93,64,0,83],"note":null},"#072057":{"cmyk":[92,63,0,66],"note":null},"#0A3184":{"cmyk":[93,63,0,48],"note":null},"#5D77AE":{"cmyk":[47,32,0,32],"note":null},"#2C3751":{"cmyk":[46,32,0,68],"note":null},"#576FA2":{"cmyk":[46,31,0,36],"note":null},"#84A8F5":{"cmyk":[46,31,0,4],"note":null},"#AEC6F8":{"cmyk":[30,20,0,3],"note":null},"#45494E":{"cmyk":[12,6,0,69],"note":null},"#89939C":{"cmyk":[12,6,0,39],"note":null},"#D0DEEC":{"cmyk":[12,6,0,8],"note":null},"#E0E9F2":{"cmyk":[7,4,0,5],"note":null},"#EFF4F9":{"cmyk":[4,2,0,2],"note":null},"#08131D":{"cmyk":[72,34,0,88],"note":null},"#10263A":{"cmyk":[72,34,0,77],"note":null},"#183958":{"cmyk":[73,35,0,65],"note":null},"#677C91":{"cmyk":[29,14,0,43],"note":null},"#B3BEC8":{"cmyk":[11,5,0,22],"note":null},"#0E2030":{"cmyk":[71,33,0,81],"note":null},"#FFFFFF":{"cmyk":[0,0,0,0],"note":"Paper white"},"#EAF2FF":{"cmyk":[8,5,0,0],"note":"Digital only"}};
 
 window.SC_COLORS = {
   steps: ["Darker", "Dark", "Default", "Light", "Lighter"],
@@ -55,13 +54,13 @@ window.SC_COLORS = {
   ],
   proportions: [
     { name: "UI Blue", role: "Buttons / Hyperlinks", hex: "#326EEF", flex: 1 },
-    { name: "Indigo Purple", role: "Brand Color 1", hex: "#9963FD", flex: 1 },
-    { name: "Dodger Blue", role: "Brand Color 2", hex: "#0094FF", flex: 1 },
-    { name: "Industry Blue", role: "Brand Color 3", hex: "#0A3184", flex: 1.9 },
-    { name: "Industry Blue Darker", role: "Background Color", hex: "#03102C", flex: 1.9 },
-    { name: "Dodger Blue Lighter", role: "Background Color", hex: "#ABDCFF", flex: 1.9 },
-    { name: "Hawkes Blue Light", role: "Background Color", hex: "#E0E9F2", flex: 1.9 },
-    { name: "Maya Blue Lighter", role: "Background Color", hex: "#D6E2FC", flex: 1.9 }
+    { name: "Indigo Purple", role: "Use sparingly and in relation to the Engagement Platform", hex: "#9963FD", flex: 1 },
+    { name: "Dodger Blue", role: "Brand highlight color, for creating emphasis", hex: "#0094FF", flex: 1 },
+    { name: "Industry Blue", role: "Use to create contrasting dark backgrounds", hex: "#0A3184", flex: 1.9 },
+    { name: "Industry Blue Darker", role: "Primary brand background color", hex: "#03102C", flex: 1.9 },
+    { name: "Dodger Blue Lighter", role: "Secondary brand background color", hex: "#ABDCFF", flex: 1.9 },
+    { name: "Hawkes Blue Light", role: "Default light brand background color", hex: "#E0E9F2", flex: 1.9 },
+    { name: "Maya Blue Lighter", role: "Background color", hex: "#D6E2FC", flex: 1.9 }
   ],
   chart: [
     { name: "Dodger", hex: "#0094FF" },
@@ -81,9 +80,7 @@ window.SC_COLORS = {
     { fg: "#326EEF", bg: "#FFFFFF", label: "UI Blue on White" },
     { fg: "#0094FF", bg: "#FFFFFF", label: "Dodger Blue on White" },
     { fg: "#0094FF", bg: "#03102C", label: "Dodger Blue on Industry Darker" },
-    { fg: "#183958", bg: "#EFF4F9", label: "Regal on Hawkes Lighter" },
-    { fg: "#0E2030", bg: "#ABDCFF", label: "Tiber on Dodger Lighter" },
-    { fg: "#84A8F5", bg: "#03102C", label: "Maya on Industry Darker" }
+    { fg: "#183958", bg: "#EFF4F9", label: "Regal on Hawkes Lighter" }
   ]
 };
 

@@ -21,8 +21,8 @@ img, svg { max-width: 100%; }
 h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
 button { font: inherit; color: inherit; }
 
-a { color: var(--action); text-underline-offset: 2px; }
-a:hover { color: var(--action-hover); }
+a { color: var(--sc-ui-blue); text-underline-offset: 2px; }   /* links stay UI Blue; --action (Dodger) is for buttons */
+a:hover { color: var(--sc-ui-blue-dark); }
 
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
 
@@ -119,7 +119,7 @@ a:hover { color: var(--action-hover); }
 }
 .topnav a span { padding: 2px 6px; border-radius: 5px; }
 .topnav a:hover span { background: var(--surface-tint); }
-.topnav a[aria-current] span { background: var(--surface-tint); color: var(--sc-ui-blue-dark); }
+.topnav a[aria-current] span { background: var(--surface-tint); color: var(--sc-ui-blue); }
 
 .topnav__tools { flex: none; }
 .link-btn {
@@ -232,6 +232,7 @@ main { display: block; }
 .card > * + * { margin-top: 8px; }
 
 .grid { display: grid; gap: 20px; }
+.grid > * { min-width: 0; }   /* wide content (tables) scrolls inside its card instead of widening the page */
 .grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -444,15 +445,14 @@ main { display: block; }
 .subpanel__body > * + * { margin-top: 16px; }
 
 .proportions { display: flex; height: 130px; border-radius: var(--radius-panel); overflow: hidden; }
-.proportions > div { position: relative; display: flex; align-items: flex-end; padding: 12px; min-width: 0; }
-.proportions span {
-  display: block; padding: 4px 8px; border-radius: 5px; background: rgba(3, 16, 44, 0.78); color: #fff;
-  font: 500 11px/14px var(--font-ui); overflow: hidden; text-overflow: ellipsis;
-}
-@media (max-width: 800px) {
-  .proportions { flex-direction: column; height: auto; }
-  .proportions > div { flex: none !important; height: 44px; align-items: center; }
-}
+.proportions > div { min-width: 0; }
+@media (max-width: 800px) { .proportions { height: 72px; } }
+.prop-key { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px 24px; }
+.prop-key li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 20px; color: var(--text-muted); }
+.prop-key i { flex: none; width: 14px; height: 14px; margin-top: 3px; border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(3, 16, 44, .12); }
+.prop-key b { display: block; color: var(--text-strong); font-weight: 700; }
+@media (max-width: 1000px) { .prop-key { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .prop-key { grid-template-columns: minmax(0, 1fr); } }
 
 .gradient-tile {
   display: flex; align-items: flex-end; min-height: 130px; padding: 16px; border-radius: var(--radius-panel);
@@ -724,14 +724,11 @@ main { display: block; }
 .xl-subhead:first-child { margin-top: 4px; }
 .xl-books .resource > img { display: block; width: 100%; height: auto; margin-bottom: 16px; border-radius: var(--radius-tile); border: 1px solid var(--line-card); }
 .xl-books .row { margin-top: 12px; gap: 8px; }
-.inv-lockups { margin-top: 14px; gap: 14px; }
-.inv-lockup { margin: 0; background: #fff; border: 1px solid var(--line-card); border-radius: var(--radius-tile); overflow: hidden; }
-.inv-lockup__stage { display: grid; place-items: center; height: 130px; padding: 18px; }
-.inv-lockup__stage img { width: min(200px, 85%); height: auto; }
-.inv-lockup--dark .inv-lockup__stage { background: var(--sc-tiber); }
-.inv-lockup figcaption { display: flex; flex-direction: column; gap: 2px; padding: 10px 14px 12px; font-size: 13px; color: var(--text-strong); font-weight: 500; }
-.inv-lockup figcaption span { color: var(--text-muted); font-weight: 400; }
 
-/* Sections that group several items as expandable rows (Templates, Innovate26) */
+/* Sections that group several items as expandable rows (Templates, Innovate) */
 .subpanels { margin-top: 20px; }
 .sub-lede { margin-bottom: 18px; font-size: 16px; line-height: 24px; color: var(--text-body); }
+.inv-app__media--wide { aspect-ratio: 1200 / 628; background: var(--sc-tiber); }
+.inv-app__media--wide img { inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.inv-type { margin: 18px 0 0; border-radius: var(--radius-tile); overflow: hidden; background: var(--sc-tiber); }
+.inv-type img { display: block; width: 100%; height: auto; }

@@ -52,7 +52,7 @@
   function reveal(id, scroll, behavior) {
     const target = document.getElementById(id);
     if (!target) return;
-    // a section opens itself; a row inside a section (Templates, Innovate26) opens itself too
+    // a section opens itself; a row inside a section (Templates, Innovate) opens itself too
     const btn = target.classList.contains("subpanel") ? $('[data-toggle="sub"]', target) : $('[data-toggle="section"]', target);
     if (btn && btn.getAttribute("aria-expanded") !== "true") setOpen(btn, true);
     for (let el = target; el; el = el.parentElement) {
@@ -132,15 +132,11 @@
   const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
   const inkFor = (hex) => (ratio("#FFFFFF", hex) >= ratio("#0E2030", hex) ? "#FFFFFF" : "#0E2030");
 
-  // CMYK + closest PMS (Solid Coated) under each swatch, from SC_PRINT in data.js
+  // CMYK under each swatch, from SC_PRINT in data.js (PMS matches were dropped at the October 2026 review)
   function printLines(hex) {
     const p = (window.SC_PRINT || {})[hex.toUpperCase()];
     if (!p) return "";
-    const cmyk = `<span class="swatch__rgb">CMYK ${p.cmyk.join(" ")}</span>`;
-    const pms = p.pms
-      ? `<span class="swatch__rgb">PMS ${p.pms}${p.de > 6 ? " <em>(loose match)</em>" : ""}</span>`
-      : `<span class="swatch__rgb">PMS — ${p.note.toLowerCase()}</span>`;
-    return cmyk + pms;
+    return `<span class="swatch__rgb">CMYK ${p.cmyk.join(" ")}</span>`;
   }
 
   function swatch(name, step, hex, isDefault) {
@@ -200,8 +196,14 @@
 
   const prop = $("#proportions");
   if (prop) {
+    // the bar shows the balance; the key underneath carries the names and roles (too long for the narrow segments)
     prop.innerHTML = C.proportions.map((p) =>
-      `<div style="flex:${p.flex};background:${p.hex}" title="${p.name} — ${p.role}"><span>${p.name}<br>${p.role}</span></div>`).join("");
+      `<div style="flex:${p.flex};background:${p.hex}" title="${p.name} — ${p.role}"></div>`).join("");
+    const key = document.createElement("ul");
+    key.className = "prop-key";
+    key.innerHTML = C.proportions.map((p) =>
+      `<li><i style="background:${p.hex}"></i><span><b>${p.name}</b>${p.role}</span></li>`).join("");
+    prop.after(key);
   }
 
   const chart = $("#chart-colors");

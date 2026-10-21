@@ -57,9 +57,10 @@
      Dodger Dark keeps the family and clears WCAG AA at 13px. */
   --accent-text: var(--sc-dodger-dark);
 
-  /* Buttons + links: UI Blue is the kit's web accent and passes AA (4.6:1). */
-  --action: var(--sc-ui-blue);
-  --action-hover: var(--sc-ui-blue-dark);
+  /* Buttons: Dodger Blue (chosen at the October 2026 review). White on Dodger is 3.1:1, AA for large text only,
+     so accessibility checkers flag small buttons. Links stay UI Blue (4.6:1). */
+  --action: var(--sc-dodger);
+  --action-hover: var(--sc-dodger-dark);
   --focus: var(--sc-ui-blue);
 
   --surface-page: #FFFFFF;
