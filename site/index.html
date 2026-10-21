@@ -23,6 +23,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/site.css">
+<script>
+  /* BugHerd feedback sidebar, for client review rounds only. It loads from the review link (?review=1) and stays on
+     for that browser tab; ?review=0 turns it off. The public guide never loads it. */
+  (function () {
+    var q = location.search, on = /[?&]review=1(&|$)/.test(q);
+    try {
+      if (/[?&]review=0(&|$)/.test(q)) sessionStorage.removeItem("sc-review");
+      else if (on) sessionStorage.setItem("sc-review", "1");
+      else on = sessionStorage.getItem("sc-review") === "1";
+    } catch (e) {}
+    if (!on) return;
+    var s = document.createElement("script");
+    s.src = "https://www.bugherd.com/sidebarv2.js?apikey=cea3ya2xyvtpb7q4kc8rtw";
+    s.async = true;
+    document.head.appendChild(s);
+  })();
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
