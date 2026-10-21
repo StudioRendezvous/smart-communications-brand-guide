@@ -736,8 +736,6 @@ main { display: block; }
 .sub-lede { margin-bottom: 18px; font-size: 16px; line-height: 24px; color: var(--text-body); }
 .inv-app__media--wide { aspect-ratio: 1200 / 628; background: var(--sc-tiber); }
 .inv-app__media--wide img { inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.inv-type { margin: 18px 0 0; border-radius: var(--radius-tile); overflow: hidden; background: var(--sc-tiber); }
-.inv-type img { display: block; width: 100%; height: auto; }
 
 /* Review mode (site.js): sections open and locked while BugHerd is on the page */
 .review-bar { background: var(--sc-tiber); color: #fff; font: 500 14px/20px var(--font-ui); padding: 10px 16px; text-align: center; }
