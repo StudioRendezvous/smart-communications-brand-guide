@@ -352,7 +352,6 @@
       $("#icon-dialog-stage").innerHTML = avail.map((v) => `
         <div class="${isLight(v) ? "is-dark" : ""}"><img src="assets/icons/${v}/${icon.slug}.svg" alt="${VARIANTS[v]} version preview"></div>`).join("");
       $("#icon-dialog-stage").dataset.count = avail.length;
-      $("#icon-dialog-note").textContent = TWO.has(icon.slug) ? "" : "One-color only: this icon has no designed accent.";
       $("#icon-dialog-actions").innerHTML = avail.map((v) => `
         <div class="dl-row"><span>${VARIANTS[v]}</span>
           <a class="btn btn--sm" href="assets/icons/${v}/${icon.slug}.svg" download="SC_icon_${fileLabel(icon.label)}_${v}.svg" aria-label="${VARIANTS[v]} SVG">SVG</a>

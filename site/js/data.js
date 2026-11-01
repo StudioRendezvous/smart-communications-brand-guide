@@ -120,7 +120,7 @@ window.SC_COLORS = {
 
 /* 68 monoline icons. Labels + tags added for search; file slugs match the kit + Figma 1364:10877. */
 // Icons that have a designed Dodger accent (the 2-color sets)
-window.SC_ICON_2COLOR = ["ai-flow", "icon-09", "icon-10", "icon-11", "icon-12", "icon-37", "icon-49", "icon-51", "icon-54", "icon-55", "icon-56", "icon-57", "icon-58", "icon-60", "icon-61", "icon-62", "icon-64", "icon-66", "message-data", "messaging"];
+window.SC_ICON_2COLOR = ["ai-flow", "bdd-testing", "calendar", "calendar-2", "icon-07", "icon-08", "icon-09", "icon-10", "icon-11", "icon-12", "icon-13", "icon-15", "icon-16", "icon-17", "icon-18", "icon-19", "icon-20", "icon-21", "icon-22", "icon-23", "icon-24", "icon-25", "icon-26", "icon-27", "icon-28", "icon-29", "icon-30", "icon-31", "icon-32", "icon-33", "icon-34", "icon-35", "icon-36", "icon-37", "icon-38", "icon-39", "icon-40", "icon-41", "icon-42", "icon-43", "icon-44", "icon-45", "icon-46", "icon-47", "icon-48", "icon-49", "icon-50", "icon-51", "icon-53", "icon-54", "icon-55", "icon-56", "icon-57", "icon-58", "icon-59", "icon-60", "icon-61", "icon-62", "icon-64", "icon-65", "icon-66", "message-data", "messaging", "network-connection-cloud-computer", "pinpoint", "stopwatch", "time-chronometer", "world-location"];
 
 window.SC_ICONS = [
   ["ai-flow", "AI workflow", "ai automation process flow diagram"],
