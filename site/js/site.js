@@ -59,11 +59,6 @@
     try { sessionStorage.setItem("sc-review-open", "1"); } catch (e) {}
     document.documentElement.classList.add("is-review");
     toggles.forEach((b) => setOpen(b, true));
-    const note = document.createElement("div");
-    note.className = "review-bar";
-    note.setAttribute("role", "note");
-    note.textContent = "Review mode: every section stays open, so comments stay pinned where you leave them.";
-    document.body.prepend(note);
   }
   const hasBugHerd = () => !!document.querySelector('[id*="bugherd" i]');
   let reviewOn = /[?&]review=1(&|$)/.test(location.search);
@@ -188,26 +183,25 @@
   const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
   const inkFor = (hex) => (ratio("#FFFFFF", hex) >= ratio("#0E2030", hex) ? "#FFFFFF" : "#0E2030");
 
-  // CMYK under each swatch, from SC_PRINT in data.js (PMS matches were dropped at the October 2026 review)
-  function printLines(hex) {
-    const p = (window.SC_PRINT || {})[hex.toUpperCase()];
-    if (!p) return "";
-    return `<span class="swatch__rgb">CMYK ${p.cmyk.join(" ")}</span>`;
-  }
-
-  function swatch(name, step, hex, isDefault) {
+  // Values appear over the chip on hover, focus or tap (Figma swatch hover states); a click copies the HEX.
+  function swatch(name, step, hex, isDefault, cmyk) {
     const li = document.createElement("li");
     const ink = inkFor(hex);
+    const backed = ratio(ink, hex) < 4.5 ? " is-backed" : "";
+    const print = cmyk || ((window.SC_PRINT || {})[hex.toUpperCase()] || {}).cmyk;
+    const label = step || name;
     li.innerHTML = `
-      <button type="button" class="swatch${isDefault ? " is-default" : ""}" data-hex="${hex}" data-name="${name}${step ? " " + step : ""}"
-        aria-label="Copy ${name}${step ? " " + step : ""}, ${hex}">
+      <button type="button" class="swatch${isDefault ? " is-default" : ""}" style="--c:${hex}" data-hex="${hex}" data-name="${name}${step ? " " + step : ""}"
+        aria-label="Copy ${name}${step ? " " + step : ""}, ${hex}, RGB ${rgb(hex).join(" ")}${print ? ", CMYK " + print.join(" ") : ""}">
         <span class="swatch__chip" style="background:${hex}">
-          ${step ? `<span class="swatch__step${ratio(ink, hex) < 4.5 ? " is-backed" : ""}" style="color:${ink}">${step}</span>` : ""}
-          <span class="swatch__copy" aria-hidden="true">Copy</span>
+          <span class="swatch__step${isDefault ? " is-pill" : backed}" style="${isDefault ? "" : `color:${ink}`}">${label}</span>
+          <span class="swatch__info${backed}" style="${backed ? "" : `color:${ink};background:${hex}`}">
+            ${print ? `<span><b>CMYK</b> ${print.join(" ")}</span>` : ""}
+            <span><b>RGB</b> ${rgb(hex).join(" ")}</span>
+            <span><b>HEX</b> ${hex}</span>
+            <span class="swatch__copy" aria-hidden="true">Copy</span>
+          </span>
         </span>
-        <span class="swatch__hex">${hex}</span>
-        <span class="swatch__rgb">RGB ${rgb(hex).join(", ")}</span>
-        ${printLines(hex)}
       </button>`;
     return li;
   }
@@ -217,7 +211,7 @@
     C.groups.forEach((g) => {
       const wrap = document.createElement("div");
       wrap.className = "palette-group";
-      wrap.innerHTML = `<h3>${g.name}</h3><p>${g.note}</p>`;
+      wrap.innerHTML = `<h3>${g.name}</h3>`;
       g.families.forEach((f) => {
         const fam = document.createElement("div");
         fam.className = "family";
@@ -230,40 +224,21 @@
       });
       palette.appendChild(wrap);
     });
-    const util = document.createElement("div");
-    util.className = "palette-group";
-    util.innerHTML = `<h3>Utility + text</h3><p>Supporting values. Regal is for body text on light print pieces — it is not a seventh brand color.</p>`;
-    const ul = document.createElement("ul");
-    ul.className = "ramp";
-    ul.style.marginTop = "18px";
-    C.utility.forEach((u) => {
-      const li = swatch(u.name, "", u.hex, false);
-      li.querySelector(".swatch__rgb").insertAdjacentHTML("beforebegin", `<span class="swatch__rgb" style="color:var(--text-strong);font-weight:500">${u.name} · ${u.role}</span>`);
-      ul.appendChild(li);
-    });
-    util.appendChild(ul);
-    palette.appendChild(util);
-
-    palette.addEventListener("click", (e) => {
-      const b = e.target.closest(".swatch");
-      if (b) copy(b.dataset.hex, `<i style="background:${b.dataset.hex}"></i>Copied ${b.dataset.hex} · ${b.dataset.name}`);
-    });
   }
+  $$("[data-subbrand]").forEach((ul) => {
+    (window.SC_SUBBRANDS[ul.dataset.subbrand] || []).forEach(([name, hex, cmyk]) => ul.appendChild(swatch(name, "", hex, false, cmyk)));
+  });
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest(".swatch");
+    if (b) copy(b.dataset.hex, `<i style="background:${b.dataset.hex}"></i>Copied ${b.dataset.hex} · ${b.dataset.name}`);
+  });
 
   const prop = $("#proportions");
   if (prop) {
-    // the bar shows the balance; the key underneath carries the names and roles (too long for the narrow segments)
-    prop.innerHTML = C.proportions.map((p) =>
-      `<div style="flex:${p.flex};background:${p.hex}" title="${p.name} — ${p.role}"></div>`).join("");
-    const key = document.createElement("ul");
-    key.className = "prop-key";
-    key.innerHTML = C.proportions.map((p) =>
-      `<li><i style="background:${p.hex}"></i><span><b>${p.name}</b>${p.role}</span></li>`).join("");
-    prop.after(key);
+    const block = (p) => `<div class="prop" style="background:${p.hex};--ink:${inkFor(p.hex)};--grow:${p.pct}"><strong>${p.pct}%</strong><span>${p.name}<br>${p.role}</span></div>`;
+    prop.innerHTML = C.proportions.filter((p) => !p.stack).map(block).join("") +
+      `<div class="prop-stack">${C.proportions.filter((p) => p.stack).map(block).join("")}</div>`;
   }
-
-  const chart = $("#chart-colors");
-  if (chart) chart.innerHTML = C.chart.map((c, i) => `<li><i style="background:${c.hex}"></i>${i + 1}. ${c.name} <code>${c.hex}</code></li>`).join("");
 
   const contrast = $("#contrast-rows");
   if (contrast) {
@@ -330,39 +305,44 @@
   });
 
   /* ---- Icons -------------------------------------------------------------------------------------------- */
-  const grid = $("#icon-grid");
-  if (grid) {
-    const board = $("#icon-board");
+  const boards = $("#icon-boards");
+  if (boards) {
     const input = $("#icon-search");
     const count = $("#icon-count");
     const dialog = $("#icon-dialog");
-    let variant = "dark";
+    let style = "mono";
     const TWO = new Set(window.SC_ICON_2COLOR || []);
-    const VARIANTS = { "dark": "Dark", "light": "Light", "dark-2color": "Dark 2-color", "light-2color": "Light 2-color" };
+    const VARIANTS = { "dark": "Monotone Dark", "light": "Monotone Light", "dark-2color": "Duotone Dark", "light-2color": "Duotone Light" };
     const isLight = (v) => v.startsWith("light");
+    const fileLabel = (label) => label.replace(/[^A-Za-z0-9]+/g, "-").replace(/^-|-$/g, "");
     const has = (slug, v) => !v.endsWith("2color") || TWO.has(slug);
+    const ZIPS = { "dark": "Dark", "light": "Light", "dark-2color": "Dark_2-Color", "light-2color": "Light_2-Color" };
+    const variantOf = (tone) => (style === "duo" ? tone + "-2color" : tone);
 
     const render = () => {
       const q = input.value.trim().toLowerCase();
-      const pool = window.SC_ICONS.filter((i) => has(i.slug, variant));
-      const list = pool.filter((i) => !q || `${i.slug} ${i.label} ${i.tags}`.toLowerCase().includes(q));
-      grid.innerHTML = list.map((i) => `
-        <li><button type="button" class="icon-btn" data-slug="${i.slug}" aria-label="${i.label} — open download options">
-          <img src="assets/icons/${variant}/${i.slug}.svg" alt="" loading="lazy" width="44" height="44">
-          <span>${i.label}</span></button></li>`).join("") || "";
-      $("#icon-empty").hidden = list.length > 0;
-      count.textContent = `${list.length} of ${pool.length} icons`;
+      $$(".icon-board", boards).forEach((b) => {
+        const variant = variantOf(b.dataset.tone);
+        const pool = window.SC_ICONS.filter((i) => has(i.slug, variant));
+        const list = pool.filter((i) => !q || `${i.slug} ${i.label} ${i.tags}`.toLowerCase().includes(q));
+        $(".icon-grid", b).innerHTML = list.map((i) => `
+          <li><button type="button" class="icon-btn" data-slug="${i.slug}" aria-label="${i.label} — open download options">
+            <img src="assets/icons/${variant}/${i.slug}.svg" alt="" loading="lazy" width="44" height="44">
+            <span>${i.label}</span></button></li>`).join("");
+        $(".icon-empty", b).hidden = list.length > 0;
+        $("[data-zip]", b).href = `assets/downloads/SmartCommunications_Icons_${ZIPS[variant]}.zip`;
+        count.textContent = `${list.length} of ${pool.length} icons`;
+      });
     };
     input.addEventListener("input", render);
     $$("#icon-variant button").forEach((b) => b.addEventListener("click", () => {
-      variant = b.dataset.variant;
+      style = b.dataset.style;
       $$("#icon-variant button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
-      board.classList.toggle("is-dark", isLight(variant));
       render();
     }));
     render();
 
-    grid.addEventListener("click", (e) => {
+    boards.addEventListener("click", (e) => {
       const b = e.target.closest(".icon-btn");
       if (!b) return;
       const icon = window.SC_ICONS.find((i) => i.slug === b.dataset.slug);
@@ -375,8 +355,8 @@
       $("#icon-dialog-note").textContent = TWO.has(icon.slug) ? "" : "One-color only: this icon has no designed accent.";
       $("#icon-dialog-actions").innerHTML = avail.map((v) => `
         <div class="dl-row"><span>${VARIANTS[v]}</span>
-          <a class="btn btn--sm" href="assets/icons/${v}/${icon.slug}.svg" download="SC_icon_${icon.slug}_${v}.svg" aria-label="${VARIANTS[v]} SVG">SVG</a>
-          <button type="button" class="btn btn--sm btn--ghost" data-png="assets/icons/${v}/${icon.slug}.svg" data-filename="SC_icon_${icon.slug}_${v}.png" data-width="512" aria-label="${VARIANTS[v]} PNG">PNG</button></div>`).join("");
+          <a class="btn btn--sm" href="assets/icons/${v}/${icon.slug}.svg" download="SC_icon_${fileLabel(icon.label)}_${v}.svg" aria-label="${VARIANTS[v]} SVG">SVG</a>
+          <button type="button" class="btn btn--sm btn--ghost" data-png="assets/icons/${v}/${icon.slug}.svg" data-filename="SC_icon_${fileLabel(icon.label)}_${v}.png" data-width="95" aria-label="${VARIANTS[v]} PNG">PNG</button></div>`).join("");
       dialog.showModal();
     });
     $("#icon-dialog-close").addEventListener("click", () => dialog.close());
@@ -437,11 +417,5 @@
     note.innerHTML = installed("Proxima Nova")
       ? "<strong>Proxima Nova is installed</strong> on this device, so the samples below render in the brand face."
       : "<strong>Showing Arial</strong> — Proxima Nova isn't installed on this device. Arial is the approved fallback until the Proxima files are in place.";
-  }
-  const segoe = $("#segoe-note");
-  if (segoe) {
-    segoe.innerHTML = installed("Segoe UI")
-      ? "<strong>Segoe UI is installed</strong> on this device, so the samples below render in it."
-      : "<strong>Showing Arial</strong> — Segoe UI isn't installed on this device (it comes with Windows and Office).";
   }
 })();

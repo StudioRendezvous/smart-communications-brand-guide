@@ -1,0 +1,16 @@
+<svg style="display: block;" width="63.3353" height="46.9681" viewBox="0 0 63.3353 46.9681" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Innovate27 double arrow, gradient</title>
+<g id="arrow">
+<path id="Vector" d="M28.9163 3.67546e-07L63.3353 23.484L28.9163 46.9681L28.9163 3.67546e-07Z" fill="url(#paint0_linear_0_4)"/>
+<path id="Vector_2" d="M0.000231887 8.90435L21.3783 23.4792L0.000229348 38.054L0.000231887 8.90435Z" fill="url(#paint1_linear_0_4)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_4" x1="18.1505" y1="23.484" x2="74.003" y2="23.4841" gradientUnits="userSpaceOnUse">
+<stop stop-color="#326EEE"/>
+<stop offset="1" stop-color="#0A3183"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_4" x1="21.4281" y1="23.2986" x2="-0.0698572" y2="23.435" gradientUnits="userSpaceOnUse">
+<stop stop-color="#2415FF"/>
+<stop offset="1" stop-color="#74EBD5"/>
+</linearGradient>
+</defs>
+</svg>

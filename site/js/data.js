@@ -5,19 +5,69 @@
 /* SharePoint / external links. Paste a URL to switch a placeholder button on.
    null = the button renders as "Link coming". */
 window.SC_LINKS = {
-  productLogoPack: null,
   imageLibrary: null,
-  messagingDoc: null,
   masterTemplate: null,
-  corporateDeck: null,
-  briefAdvert: null,
-  eventBackdrops: null,
-  retractableBanners: null,
+  backdrop8x10Screen: null,
+  backdrop8x10NoScreen: null,
+  bannerSmartIQ: null,
+  bannerSmartCOMM: null,
+  bannerSmartPATH: null,
+  bannerSmartHUB: null,
+  bannerInsurance: null,
+  bannerFinancial: null,
+  bannerHealthcare: null,
+  bannerGovernment: null,
+  swagChoc180: null,
+  swagChoc47: null,
+  swagLegoContact: null,
+  swagLegoPoster: null,
+  swagPowerContact: null,
   guideBrief: null,
   guideMarketo: null,
   guideAsana: null,
   guide6Sense: null,
-  proximaFonts: null
+  proximaFonts: null,
+  brief6Sense: null,
+  brief6SenseCampaign: null,
+  briefAnalystPromo: null,
+  briefBlogThumbs: null,
+  briefEmailBody: null,
+  briefEmailFeature: null,
+  briefEmailHero: null,
+  briefEventPromo: null,
+  briefFullSuite: null,
+  briefOrganicLinkedIn: null,
+  briefPaidLinkedIn: null,
+  briefPathFactory: null,
+  briefPromoMaterials: null,
+  briefVideoIntro: null,
+  briefVideoOutro: null,
+  briefYouTube: null,
+  cutoutLibrary: null,
+  vidAce: null,
+  vidApac: null,
+  vidArchiving: null,
+  vidBcbs: null,
+  vidCapital: null,
+  vidCcm: null,
+  vidContentPromo: null,
+  vidForms: null,
+  vidHero: null,
+  vidHighlight: null,
+  vidIdc: null,
+  vidInsurance: null,
+  vidIqStory: null,
+  vidKnowledge: null,
+  vidMeetHub: null,
+  vidMeetPath: null,
+  vidMemberId: null,
+  vidOnDemand: null,
+  vidReportLaunch: null,
+  vidTrends: null,
+  vidWebinar: null,
+  videoInnovateSting: null,
+  videoLogoSting: null,
+  videoLowerThirds: null
 };
 
 // Print values. CMYK: straight conversions from the screen colors (as listed in the brand Figma).
@@ -28,8 +78,7 @@ window.SC_COLORS = {
   steps: ["Darker", "Dark", "Default", "Light", "Lighter"],
   groups: [
     {
-      name: "Brights",
-      note: "Accents, calls to action, stats and a rare purple flash.",
+      name: "Accent Colors",
       families: [
         { name: "UI Blue", role: "Buttons + hyperlinks", ramp: ["#001F6D", "#1344C1", "#326EEF", "#90B1F4", "#D6E2FC"] },
         { name: "Indigo Purple", role: "Brand color 1 — use sparingly", ramp: ["#38009F", "#661DEE", "#9963FD", "#BE9DFA", "#D9C9F7"] },
@@ -37,38 +86,23 @@ window.SC_COLORS = {
       ]
     },
     {
-      name: "Backgrounds",
-      note: "Fields, panels and page canvas.",
+      name: "Background Colors",
       families: [
-        { name: "Industry Blue", role: "Brand color 3 — navy fields", ramp: ["#03102C", "#072057", "#0A3184", "#5D77AE", "#D6E2FC"] },
+        { name: "Industry Blue", role: "Dark brand background", ramp: ["#03102C", "#072057", "#0A3184", "#5D77AE", "#D6E2FC"] },
         { name: "Maya Blue", role: "Soft background blue", ramp: ["#2C3751", "#576FA2", "#84A8F5", "#AEC6F8", "#D6E2FC"] },
         { name: "Hawkes Blue", role: "Neutrals + light canvas", ramp: ["#45494E", "#89939C", "#D0DEEC", "#E0E9F2", "#EFF4F9"] }
       ]
     }
   ],
-  utility: [
-    { name: "Tiber", hex: "#0E2030", role: "Logo fill + gradient end" },
-    { name: "White", hex: "#FFFFFF", role: "Light surfaces" },
-    { name: "Glass", hex: "#EAF2FF", role: "Glass fill + stroke (digital only)" },
-    { name: "Regal", hex: "#183958", role: "Body text on light (print)" }
-  ],
+  // Figma "Color Proportions" (Oct 2026): four columns, then a stacked column. Labels as in Figma.
   proportions: [
-    { name: "UI Blue", role: "Buttons / Hyperlinks", hex: "#326EEF", flex: 1 },
-    { name: "Indigo Purple", role: "Use sparingly and in relation to the Engagement Platform", hex: "#9963FD", flex: 1 },
-    { name: "Dodger Blue", role: "Brand highlight color, for creating emphasis", hex: "#0094FF", flex: 1 },
-    { name: "Industry Blue", role: "Use to create contrasting dark backgrounds", hex: "#0A3184", flex: 1.9 },
-    { name: "Industry Blue Darker", role: "Primary brand background color", hex: "#03102C", flex: 1.9 },
-    { name: "Dodger Blue Lighter", role: "Secondary brand background color", hex: "#ABDCFF", flex: 1.9 },
-    { name: "Hawkes Blue Light", role: "Default light brand background color", hex: "#E0E9F2", flex: 1.9 },
-    { name: "Maya Blue Lighter", role: "Background color", hex: "#D6E2FC", flex: 1.9 }
-  ],
-  chart: [
-    { name: "Dodger", hex: "#0094FF" },
-    { name: "Indigo Dark", hex: "#661DEE" },
-    { name: "Dodger Light", hex: "#57B8FF" },
-    { name: "UI Blue Dark", hex: "#1344C1" },
-    { name: "Indigo Light", hex: "#BE9DFA" },
-    { name: "Dodger Dark", hex: "#0062A8" }
+    { pct: 30, name: "Industry Blue Darker", role: "Background Color", hex: "#03102C" },
+    { pct: 30, name: "Hawkes Blue Light", role: "Background Color", hex: "#E0E9F2" },
+    { pct: 10, name: "Dodger Blue Lighter", role: "Background Color", hex: "#ABDCFF" },
+    { pct: 10, name: "Dodger Blue", role: "Highlight Brand Color", hex: "#0094FF" },
+    { pct: 8, name: "Maya Blue Lighter", role: "Background Color", hex: "#D6E2FC", stack: true },
+    { pct: 8, name: "Indigo Purple", role: "All Apps", hex: "#9963FD", stack: true },
+    { pct: 4, name: "UI Blue", role: "Buttons / Hyperlinks", hex: "#326EEF", stack: true }
   ],
   /* Text/background pairs people actually reach for. Ratios are computed live. */
   pairs: [
@@ -158,3 +192,22 @@ window.SC_ICONS = [
   ["time-chronometer", "Timer", "time clock turnaround"],
   ["world-location", "Global", "world map location international"]
 ].map(([slug, label, tags]) => ({ slug, label, tags }));
+
+// Sub-brand palettes, names and CMYK from the Figma swatches (Oct 2026). CMYK corrected for three Figma typos:
+// #00A893 K 317 -> 17, #E8AC2F and white had a missing Y value.
+window.SC_SUBBRANDS = {
+  innovate: [
+    ["Navy", "#112145"], ["Dark navy", "#0E2030"], ["Industry Blue", "#0A3184"], ["UI Blue", "#326EEF"], ["Periwinkle", "#C3D3FC"],
+    ["Hawkes Blue", "#D0DEEC"], ["Aqua", "#74EBD5"], ["Violet Blue", "#4239FA"], ["Purple", "#762CEE"], ["Orchid", "#D15DFF"]
+  ],
+  accordant: [
+    ["Blue", "#001450", [66, 58, 34, 34]], ["Secondary Blue", "#10129A", [74, 73, 20, 20]], ["Accordant Blue", "#2276FF", [87, 54, 0, 0]], ["Accordant Blue Light", "#33A1FD", [80, 36, 0, 0]],
+    ["Red", "#C42F27", [12, 70, 73, 12]], ["Burnt Orange", "#F55536", [2, 65, 77, 2]], ["Orange", "#F79824", [2, 39, 84, 2]], ["Light Orange", "#E8AC2F", [5, 28, 77, 5]],
+    ["Dark", "#191716", [45, 46, 46, 45]], ["Gray", "#757473", [27, 27, 28, 27]], ["Light Gray", "#D1D1D0", [9, 9, 9, 9]], ["White", "#FFFFFF", [0, 0, 0, 0]]
+  ],
+  scale: [
+    ["Dark Teal", "#00A893", [83, 17, 25, 17]], ["Teal", "#00B6A4", [86, 17, 21, 17]], ["Light Teal", "#00D3C6", [91, 9, 14, 9]], ["Bright Teal", "#CFF8F6", [17, 1, 2, 1]],
+    ["Charcoal", "#333333", [40, 40, 40, 40]], ["Electric Blue", "#412CF1", [72, 80, 3, 3]], ["Light Blue", "#00A5F7", [98, 34, 2, 2]], ["Bright Red", "#FF0017", [0, 100, 91, 0]],
+    ["Dark", "#333333", [40, 40, 40, 40]], ["Gray", "#ACACAC", [16, 16, 16, 16]], ["Light Gray", "#EFEFEF", [3, 3, 3, 3]], ["White", "#FFFFFF", [0, 0, 0, 0]]
+  ]
+};
