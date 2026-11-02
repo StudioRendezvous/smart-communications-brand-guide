@@ -691,7 +691,7 @@ main { display: block; }
 
 /* ---- Print --------------------------------------------------------------------------------------------- */
 @media print {
-  .topnav, .skip-link, .toast, .icon-tools, .checker { display: none !important; }
+  .topnav, .skip-link, .toast, .icon-tools > .search, .icon-tools > .seg, .icon-tools > .icon-count, .checker { display: none !important; }
   [hidden="until-found"] { display: block !important; content-visibility: visible !important; }
   .hero__quick, .asset .row, .product .actions, .btn { display: none !important; }
   .section__state { display: none; }
@@ -837,7 +837,7 @@ main { display: block; }
 .do .kicker, .dont .kicker { display: block; margin: 12px 0 4px; font: 700 13px/18px var(--font-ui); color: var(--text-strong); }
 
 /* Standard AI icon */
-.ai-icon { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; padding: 16px 24px; background: #fff; border: 1px solid var(--line-accent); border-radius: var(--radius-panel); }
-.ai-icon img { display: block; width: 96px; height: auto; }
-.ai-icon h3 { color: var(--text-strong); font: 700 18px/26px var(--font-head); }
-.ai-icon p { margin-bottom: 8px; font-size: 15px; line-height: 21px; color: var(--text-muted); }
+.ai-icon { display: flex; align-items: center; gap: 12px; margin-left: auto; padding: 8px 12px 8px 8px; background: #fff; border: 1px solid var(--line-accent); border-radius: var(--radius-tile); }
+.ai-icon img { display: block; width: 52px; height: auto; }
+.ai-icon h3 { color: var(--text-strong); font: 700 15px/20px var(--font-head); }
+.ai-icon p { font-size: 13px; line-height: 18px; color: var(--text-muted); }
