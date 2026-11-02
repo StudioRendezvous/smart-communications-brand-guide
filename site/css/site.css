@@ -750,6 +750,9 @@ main { display: block; }
 .inv-els--tags .inv-el__stage img { max-height: 34px; }
 .inv-el figcaption { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 14px 12px; font-size: 13px; color: var(--text-strong); }
 .inv-el figcaption .row { gap: 6px; }
+.inv-feat img { display: block; width: 100%; height: auto; }
+.inv-photos { margin-top: 10px; gap: 12px; }
+.inv-photos img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius-tile); }
 
 /* Sub brands */
 .subbrand { position: relative; }
