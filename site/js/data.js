@@ -25,7 +25,7 @@ window.SC_LINKS = {
   guideMarketo: null,
   guideAsana: null,
   guide6Sense: null,
-  proximaFonts: null,
+  proximaFonts: "https://fonts.adobe.com/fonts/proxima-nova",
   brief6Sense: null,
   brief6SenseCampaign: null,
   briefAnalystPromo: null,

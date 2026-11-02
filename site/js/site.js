@@ -356,8 +356,8 @@
       $("#icon-dialog-stage").dataset.count = avail.length;
       $("#icon-dialog-actions").innerHTML = avail.map((v) => `
         <div class="dl-row"><span>${VARIANTS[v]}</span>
-          <a class="btn btn--sm" href="assets/icons/${v}/${icon.slug}.svg${V}" download="SC_icon_${fileLabel(icon.label)}_${v}.svg" aria-label="${VARIANTS[v]} SVG">SVG</a>
-          <button type="button" class="btn btn--sm btn--ghost" data-png="assets/icons/${v}/${icon.slug}.svg${V}" data-filename="SC_icon_${fileLabel(icon.label)}_${v}.png" data-width="95" aria-label="${VARIANTS[v]} PNG">PNG</button></div>`).join("");
+          <a class="btn btn--sm" href="assets/icons/${v}/${icon.slug}.svg${V}" download="SC_icon_${fileLabel(icon.label)}_${v}.svg" aria-label="${VARIANTS[v]} SVG">Download SVG</a>
+          <button type="button" class="btn btn--sm btn--ghost" data-png="assets/icons/${v}/${icon.slug}.svg${V}" data-filename="SC_icon_${fileLabel(icon.label)}_${v}.png" data-width="95" aria-label="${VARIANTS[v]} PNG">Download PNG</button></div>`).join("");
       dialog.showModal();
     });
     $("#icon-dialog-close").addEventListener("click", () => dialog.close());
