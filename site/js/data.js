@@ -6,7 +6,6 @@
    null = the button renders as "Link coming". */
 window.SC_LINKS = {
   imageLibrary: null,
-  masterTemplate: null,
   backdrop8x10Screen: null,
   backdrop8x10NoScreen: null,
   bannerSmartIQ: null,
