@@ -800,10 +800,10 @@ main { display: block; }
 
 /* Icon boards: one per tone, inside the Monotone or Duotone tab */
 .icon-boards { align-items: start; }
-.icon-board h3 { margin-bottom: 14px; color: var(--text-strong); font: 700 18px/26px var(--font-head); }
+.icon-board__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; margin-bottom: 14px; }
+.icon-board h3 { color: var(--text-strong); font: 700 18px/26px var(--font-head); }
 .icon-board.is-dark h3 { color: #fff; }
 .icon-board .icon-grid { grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); }
-.icon-board .btn { margin-top: 16px; }
 .icon-board.is-dark .icon-empty { color: #fff; }
 
 /* Images */

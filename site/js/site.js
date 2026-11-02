@@ -318,6 +318,7 @@
     const has = (slug, v) => !v.endsWith("2color") || TWO.has(slug);
     const ZIPS = { "dark": "Dark", "light": "Light", "dark-2color": "Dark_2-Color", "light-2color": "Light_2-Color" };
     const variantOf = (tone) => (style === "duo" ? tone + "-2color" : tone);
+    const V = "?v=20261102";  // bump when icon artwork changes, so browsers don't show cached copies
 
     const render = () => {
       const q = input.value.trim().toLowerCase();
@@ -327,10 +328,11 @@
         const list = pool.filter((i) => !q || `${i.slug} ${i.label} ${i.tags}`.toLowerCase().includes(q));
         $(".icon-grid", b).innerHTML = list.map((i) => `
           <li><button type="button" class="icon-btn" data-slug="${i.slug}" aria-label="${i.label} — open download options">
-            <img src="assets/icons/${variant}/${i.slug}.svg" alt="" loading="lazy" width="44" height="44">
+            <img src="assets/icons/${variant}/${i.slug}.svg${V}" alt="" loading="lazy" width="44" height="44">
             <span>${i.label}</span></button></li>`).join("");
         $(".icon-empty", b).hidden = list.length > 0;
-        $("[data-zip]", b).href = `assets/downloads/SmartCommunications_Icons_${ZIPS[variant]}.zip`;
+        $("[data-zip]", b).href = `assets/downloads/SmartCommunications_Icons_${ZIPS[variant]}.zip${V}`;
+        $("[data-zip]", b).textContent = `Download ${VARIANTS[variant]} icons`;
         count.textContent = `${list.length} of ${pool.length} icons`;
       });
     };
@@ -350,12 +352,12 @@
       $("#icon-dialog-slug").textContent = icon.slug + ".svg";
       const avail = Object.keys(VARIANTS).filter((v) => has(icon.slug, v));
       $("#icon-dialog-stage").innerHTML = avail.map((v) => `
-        <div class="${isLight(v) ? "is-dark" : ""}"><img src="assets/icons/${v}/${icon.slug}.svg" alt="${VARIANTS[v]} version preview"></div>`).join("");
+        <div class="${isLight(v) ? "is-dark" : ""}"><img src="assets/icons/${v}/${icon.slug}.svg${V}" alt="${VARIANTS[v]} version preview"></div>`).join("");
       $("#icon-dialog-stage").dataset.count = avail.length;
       $("#icon-dialog-actions").innerHTML = avail.map((v) => `
         <div class="dl-row"><span>${VARIANTS[v]}</span>
-          <a class="btn btn--sm" href="assets/icons/${v}/${icon.slug}.svg" download="SC_icon_${fileLabel(icon.label)}_${v}.svg" aria-label="${VARIANTS[v]} SVG">SVG</a>
-          <button type="button" class="btn btn--sm btn--ghost" data-png="assets/icons/${v}/${icon.slug}.svg" data-filename="SC_icon_${fileLabel(icon.label)}_${v}.png" data-width="95" aria-label="${VARIANTS[v]} PNG">PNG</button></div>`).join("");
+          <a class="btn btn--sm" href="assets/icons/${v}/${icon.slug}.svg${V}" download="SC_icon_${fileLabel(icon.label)}_${v}.svg" aria-label="${VARIANTS[v]} SVG">SVG</a>
+          <button type="button" class="btn btn--sm btn--ghost" data-png="assets/icons/${v}/${icon.slug}.svg${V}" data-filename="SC_icon_${fileLabel(icon.label)}_${v}.png" data-width="95" aria-label="${VARIANTS[v]} PNG">PNG</button></div>`).join("");
       dialog.showModal();
     });
     $("#icon-dialog-close").addEventListener("click", () => dialog.close());
