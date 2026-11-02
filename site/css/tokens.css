@@ -1,7 +1,7 @@
 /* Smart Communications 2026 — design tokens
    Brand color: brand-execution-kit/tokens/colors.css (Figma chip fills, no yellow / gold).
    Layout + component values: Figma "01b Brand Guide Layout" (515:607).
-   Site UI type is Roboto (kit rule: Digital + UI). Proxima Nova only appears in specimens. */
+   Site UI type is Roboto (kit rule: Digital + UI). Headlines are Proxima Nova. */
 
 :root {
   /* ---- Brand palette ---------------------------------------------------- */
@@ -77,6 +77,7 @@
   /* ---- Type --------------------------------------------------------------- */
   --font-ui: "Roboto", Arial, sans-serif;
   --font-brand: "Proxima Nova", "proxima-nova", Arial, sans-serif;
+  --font-head: "proxima-nova", "Roboto", Arial, sans-serif;  /* Adobe Fonts web project heb7mxc */
 
   /* ---- Shape + space ------------------------------------------------------ */
   --radius-section: 20px;
