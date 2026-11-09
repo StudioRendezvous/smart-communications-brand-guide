@@ -52,7 +52,10 @@
 
   /* Review mode. BugHerd pins a comment to the element it was left on; if that element sits in a closed section,
      the pin lands on the section header instead. So while BugHerd is on the page (a reviewer's extension, or the
-     ?review=1 snippet) every section opens and stays open. It lasts for the browser tab; ?review=0 ends it. */
+     ?review=1 snippet) every section opens and stays open. It lasts for the browser tab; ?review=0 ends it.
+     REVIEW_PERIOD keeps everything open for every visitor while client review runs: reviewers reach the guide from
+     BugHerd's dashboard and plain links too, without ?review=1. Set it to false at go-live to bring back collapsing. */
+  const REVIEW_PERIOD = true;
   function startReview() {
     if (reviewing) return;
     reviewing = true;
@@ -66,7 +69,7 @@
     if (/[?&]review=0(&|$)/.test(location.search)) sessionStorage.removeItem("sc-review-open");
     else reviewOn = reviewOn || sessionStorage.getItem("sc-review-open") === "1";
   } catch (e) {}
-  if (reviewOn || hasBugHerd()) startReview();
+  if (REVIEW_PERIOD || reviewOn || hasBugHerd()) startReview();
   else {
     // the extension adds its frame after the page loads; stop watching after a while for everyone else
     const watch = new MutationObserver(() => { if (hasBugHerd()) { watch.disconnect(); startReview(); } });
