@@ -113,3 +113,51 @@ html { scroll-padding-top: 90px; }
   .pl-card { padding: 16px; }
   .pl-box pre { font-size: 12.5px; line-height: 20px; }
 }
+
+/* Assistant switch */
+.pl-assistant { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 28px; }
+.pl-assistant > div:first-child { flex: 1 1 360px; }
+.pl-assistant .seg button { padding: 9px 14px; }
+
+/* Tabs in the pinned bar; the library's search and filters only show on the library tab */
+.pl-tabs { display: flex; gap: 4px; padding: 3px; border-radius: var(--radius-btn); background: var(--sc-hawkes-light); }
+.pl-tabs a { padding: 8px 14px; border-radius: 8px; color: var(--text-body); font: 500 14px/18px var(--font-ui); text-decoration: none; white-space: nowrap; }
+.pl-tabs a[aria-selected="true"] { background: #fff; color: var(--text-strong); box-shadow: 0 1px 2px rgba(3, 16, 44, 0.15); }
+.pl-libtools { display: none; flex: 1 1 520px; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.is-library .pl-libtools { display: flex; }
+
+/* Builder */
+.pl-builder { padding-top: 36px; padding-bottom: 72px; }
+.pl-step { color: var(--text-strong); font: 700 20px/28px var(--font-head); }
+.b-types { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 32px; }
+.b-type {
+  padding: 10px 16px; border: 1px solid var(--line-accent); border-radius: var(--radius-pill); background: #fff; cursor: pointer;
+  color: var(--text-strong); font: 500 14px/18px var(--font-ui);
+}
+.b-type:hover { border-color: var(--sc-dodger); }
+.b-type[aria-pressed="true"] { background: var(--sc-dodger); border-color: var(--sc-dodger); color: #fff; }
+.b-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.b-form .pl-sub { margin-bottom: 18px; }
+.b-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 16px; }
+.b-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.b-field--wide { grid-column: 1 / -1; }
+.b-field label { color: var(--text-strong); font: 500 14px/18px var(--font-ui); }
+.b-field select, .b-field input, .b-field textarea {
+  width: 100%; padding: 10px 12px; border: 1px solid var(--sc-hawkes-dark); border-radius: var(--radius-tile); background: #fff;
+  color: var(--text-strong); font: 400 15px/21px var(--font-ui);
+}
+.b-field textarea { resize: vertical; min-height: 72px; }
+.b-field select:focus-visible, .b-field input:focus-visible, .b-field textarea:focus-visible { outline-offset: 0; border-color: var(--focus); }
+.b-out { position: sticky; top: 96px; }
+.b-out .pl-box { margin-top: 12px; max-height: none; }
+.b-out .pl-sub { margin-top: 10px; }
+@media (max-width: 1000px) {
+  .b-grid { grid-template-columns: minmax(0, 1fr); }
+  .b-out { position: static; }
+}
+@media (max-width: 560px) {
+  .b-fields { grid-template-columns: minmax(0, 1fr); }
+  .pl-assistant .seg { display: grid; width: 100%; }
+}
+
+.pl-main[hidden], .pl-builder[hidden] { display: none; }

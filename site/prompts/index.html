@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Starter Prompts · SMART Brand Guide</title>
-  <meta name="description" content="Starter prompts for Claude: marketing, sales enablement, research and internal comms, each wired to the Smart Communications brand skills.">
+  <meta name="description" content="Starter prompts and a prompt builder for any AI assistant: marketing, sales enablement, research and internal comms, with the Smart Communications brand rules built in.">
   <meta name="theme-color" content="#0E2030">
   <!-- Review build: keep out of search engines until approved. Remove to go public. -->
   <meta name="robots" content="noindex, nofollow">
@@ -13,9 +13,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.typekit.net/heb7mxc.css">
-  <link rel="stylesheet" href="../css/tokens.css?v=20261111a">
-  <link rel="stylesheet" href="../css/site.css?v=20261111a">
-  <link rel="stylesheet" href="prompts.css?v=20261111a">
+  <link rel="stylesheet" href="../css/tokens.css?v=20261111c">
+  <link rel="stylesheet" href="../css/site.css?v=20261111c">
+  <link rel="stylesheet" href="prompts.css?v=20261111c">
 <script>
   /* BugHerd feedback sidebar, same switch as the guide: ?review=1 turns it on for the tab, ?review=0 turns it off. */
   (function () {
@@ -40,21 +40,21 @@
   <a href="../" aria-label="SMART Brand Guide home"><img class="pl-logo" src="../assets/logos/company/SmartCommunications_RGB_White_Logo.svg" alt="" width="131" height="44"></a>
   <span class="hero__tag">Smart Communications · Starter prompts</span>
   <h1>Start from a prompt that already works</h1>
-  <p class="hero__lede">Starter prompts for marketing, sales enablement, research and internal comms. Every one is wired to the Smart Communications brand skills, so what comes back is on brand.</p>
+  <p class="hero__lede">Starter prompts for marketing, sales enablement, research and internal comms, with the Smart Communications brand rules built in, so what comes back is on brand. Use them with whichever AI assistant you have.</p>
   <ul class="hero__quick">
     <li><a href="../"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to the brand guide</a></li>
   </ul>
 </header>
 
 <div class="pl-how wrap">
-  <div class="grid grid--2">
-    <div class="card">
-      <h2>Copy and paste</h2>
-      <p>Copy a prompt, paste it into a new Claude chat and fill in the <span class="pl-br">[BRACKETS]</span> you know. Leave the rest: Claude uses sensible defaults and asks only for what it truly needs. Keep the first line, which tells Claude which brand skills to use.</p>
+  <div class="card pl-assistant">
+    <div>
+      <h2>Which AI assistant do you use?</h2>
+      <p id="pl-assistant-note"></p>
     </div>
-    <div class="card">
-      <h2>Just ask</h2>
-      <p>Not sure which prompt fits? Tell Claude what you’re working on, like <code>help me promote our December webinar</code>, or type <code>/smart-communications-prompts</code>. Claude picks the right prompt, fills it in and offers to run it.</p>
+    <div class="seg" id="pl-assistant" role="group" aria-label="AI assistant">
+      <button type="button" data-ai="claude">Claude, with the Smart brand skills</button>
+      <button type="button" data-ai="other">Another AI assistant</button>
     </div>
   </div>
 </div>
@@ -62,17 +62,41 @@
 <div class="pl-bar">
   <div class="pl-bar__inner">
     <a class="btn btn--sm btn--ghost pl-back" href="../"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Brand guide</a>
-    <div class="search">
-      <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-      <label class="visually-hidden" for="pl-q">Search prompts</label>
-      <input id="pl-q" type="search" placeholder="Search: battlecard, webinar, LinkedIn…" autocomplete="off">
+    <div class="pl-tabs" role="tablist" aria-label="Prompt tools">
+      <a role="tab" href="#build" id="tab-build" aria-controls="builder">Build a prompt</a>
+      <a role="tab" href="#library" id="tab-library" aria-controls="main">Prompt library</a>
     </div>
-    <div class="seg" id="pl-types" role="group" aria-label="Prompt type"></div>
-    <span class="icon-count" id="pl-count" aria-live="polite"></span>
+    <div class="pl-libtools">
+      <div class="search">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <label class="visually-hidden" for="pl-q">Search prompts</label>
+        <input id="pl-q" type="search" placeholder="Search: battlecard, webinar, LinkedIn…" autocomplete="off">
+      </div>
+      <div class="seg" id="pl-types" role="group" aria-label="Prompt type"></div>
+      <span class="icon-count" id="pl-count" aria-live="polite"></span>
+    </div>
   </div>
 </div>
 
-<main id="main" class="pl-main wrap">
+<section class="pl-builder wrap" id="builder" role="tabpanel" aria-labelledby="tab-build">
+  <h2 class="pl-step">1. What are you making?</h2>
+  <div class="b-types" id="b-types" role="group" aria-label="What you're making"></div>
+  <div class="b-grid">
+    <form class="b-form card" onsubmit="return false">
+      <h2 class="pl-step">2. Fill in what you know: <span id="b-form-title"></span></h2>
+      <p class="pl-sub">Anything you leave blank stays in [BRACKETS], so you can add it in the chat.</p>
+      <div class="b-fields" id="b-fields"></div>
+    </form>
+    <div class="b-out">
+      <h2 class="pl-step">3. Copy your prompt</h2>
+      <div class="pl-box is-open"><pre id="b-preview" aria-live="polite"></pre></div>
+      <p class="pl-sub" id="b-left"></p>
+      <div class="row pl-actions"><button class="btn" type="button" id="b-copy">Copy prompt</button><button class="btn btn--ghost" type="button" id="b-reset">Clear the form</button></div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="pl-main wrap" role="tabpanel" aria-labelledby="tab-library">
   <nav class="pl-rail" id="pl-rail" aria-label="Prompt categories"></nav>
   <div class="pl-list" id="pl-list"></div>
 </main>
@@ -86,7 +110,10 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="prompts-data.js?v=20261111a"></script>
-<script src="prompts.js?v=20261111a"></script>
+<script src="prompts-data.js?v=20261111c"></script>
+<script src="assistant.js?v=20261111c"></script>
+<script src="prompts.js?v=20261111c"></script>
+<script src="builder.js?v=20261111c"></script>
+<script src="page.js?v=20261111c"></script>
 </body>
 </html>

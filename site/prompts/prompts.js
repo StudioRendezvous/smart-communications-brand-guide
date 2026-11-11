@@ -2,6 +2,7 @@
 (function () {
   "use strict";
   const DATA = window.SC_PROMPTS;
+  const AI = window.SC_ASSISTANT;
   const TYPES = ["Chat", "Research", "Execute"];
   const $ = (s) => document.querySelector(s);
   const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -13,20 +14,23 @@
     .join(p.type.includes("→") ? '<span class="pl-arrow" aria-hidden="true">→</span>' : "");
   let typeFilter = "All";
   try { typeFilter = localStorage.getItem("sc-prompt-type") || "All"; } catch (e) {}
+  if (!["All", ...TYPES].includes(typeFilter)) typeFilter = "All";
 
-  // brackets highlighted; the first line (which skills to load) set apart
+  // brackets highlighted; the opening brand line(s) set apart
+  const text0 = (line) => /^- (Voice|Exact product names|No invented|If you design)/.test(line);
   const fmt = (text) => text.split("\n").map((line, i) => {
     const h = esc(line).replace(/\[[^\]\n]+\]/g, (m) => `<span class="pl-br">${m}</span>`);
-    return i === 0 && line.startsWith("Smart Communications task") ? `<span class="pl-first">${h}</span>` : h;
+    return i === 0 && line.startsWith("Smart Communications task") || line.startsWith("- ") && i < 6 && text0(line) ? `<span class="pl-first">${h}</span>` : h;
   }).join("\n");
 
   const card = (p) => {
-    const long = p.text.split("\n").length > 9;
-    const skills = skillsOf(p).map((s) => `<code>${s}</code>`).join("");
+    const text = AI.adapt(p.text);
+    const long = text.split("\n").length > 9;
+    const skills = AI.mode === "claude" ? skillsOf(p).map((s) => `<code>${s}</code>`).join("") : "";
     return `<article class="pl-card" id="${slug(p.id)}">
       <div class="pl-card__head"><span class="pl-num">${p.id}</span><h3>${esc(p.title)}</h3><span class="pl-types">${typeTags(p)}</span></div>
       ${skills ? `<div class="pl-skills">${skills}</div>` : ""}
-      <div class="pl-box${long ? "" : " is-open"}"><pre>${fmt(p.text)}</pre></div>
+      <div class="pl-box${long ? "" : " is-open"}"><pre>${fmt(text)}</pre></div>
       ${p.add ? `<p class="pl-add"><strong>Add if you have:</strong> ${esc(p.add)}</p>` : ""}
       <div class="row pl-actions">
         <button class="btn btn--sm" type="button" data-copy="${p.id}">Copy prompt</button>
@@ -108,7 +112,7 @@
         setTimeout(() => { c.textContent = "Copy prompt"; }, 2000);
       };
       const fail = () => { box.classList.add("is-open"); selectText(box.querySelector("pre")); toast("Prompt selected. Press Ctrl+C or ⌘C to copy."); };
-      try { navigator.clipboard.writeText(p.text).then(ok, fail); } catch (err) { fail(); }
+      try { navigator.clipboard.writeText(AI.adapt(p.text)).then(ok, fail); } catch (err) { fail(); }
       return;
     }
     const x = e.target.closest("[data-expand]");
@@ -118,7 +122,7 @@
       x.setAttribute("aria-expanded", open);
       return;
     }
-    const t = e.target.closest("[data-type]");
+    const t = e.target.closest("#pl-types [data-type]");
     if (t) {
       typeFilter = t.dataset.type;
       try { localStorage.setItem("sc-prompt-type", typeFilter); } catch (err) {}
@@ -126,6 +130,7 @@
     }
   });
   $("#pl-q").addEventListener("input", render);
+  AI.onChange(render);
 
   // a link to one prompt (#p-3-3) opens it even when a filter would hide it
   function openHash() {

@@ -675,7 +675,12 @@ main { display: block; }
 .guide__actions { gap: 10px; }
 .brief-access { max-width: 900px; padding: 18px 22px; }
 .brief-access h4 { font-size: 16px; line-height: 22px; }
-.guide--wide { grid-column: 1 / -1; }
+.prompts-band { padding-bottom: 10px; }
+.prompts-card { display: flex; gap: 28px; align-items: flex-start; margin-top: 20px; }
+.prompts-card h3 { color: var(--text-strong); font: 700 20px/28px var(--font-head); }
+.prompts-card p { margin-top: 8px; font-size: 15px; line-height: 22px; max-width: 820px; }
+.prompts-card .guide__actions { margin-top: 18px; }
+@media (max-width: 700px) { .prompts-card { flex-direction: column; gap: 16px; } }
 
 /* ---- Footer ---------------------------------------------------------------------------------------- */
 .footer { background: var(--sc-industry-darker); color: var(--text-on-dark-muted); }
