@@ -21,6 +21,8 @@
   max-width: calc(var(--content-max) + 2 * var(--gutter)); margin: 0 auto; padding: 12px var(--gutter);
 }
 .pl-bar .search { max-width: 520px; }
+.pl-back { flex: none; }
+.pl-back svg { width: 14px; height: 14px; }
 
 /* Categories rail + list */
 html { scroll-padding-top: 90px; }

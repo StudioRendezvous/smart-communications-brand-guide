@@ -428,7 +428,6 @@ main { display: block; }
   position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 8px 10px;
   border-radius: inherit; font: 400 12px/16px var(--font-ui); opacity: 0; transition: opacity 0.12s ease; overflow-wrap: anywhere;
 }
-.swatch__info.is-backed { background: rgba(14, 32, 48, 0.92); color: #fff; }
 .swatch__info b { font-weight: 700; }
 .swatch__copy {
   position: absolute; right: 8px; bottom: 8px; padding: 3px 9px; border-radius: 999px;
@@ -456,7 +455,7 @@ main { display: block; }
 .subpanel__body { padding: 0 0 24px; }
 .subpanel__body > * + * { margin-top: 16px; }
 
-.proportions { display: grid; grid-template-columns: 375fr 343fr 176fr 177fr 177fr; height: 400px; border-radius: var(--radius-panel); overflow: hidden; }
+.proportions { display: grid; grid-template-columns: 375fr 259fr 230fr 133fr 138fr 113fr;   /* Figma 1346:1131, Nov 2026 */ height: 400px; border-radius: var(--radius-panel); overflow: hidden; }
 .prop { display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; padding: 14px; min-width: 0; flex: var(--grow) 1 0; }
 .prop strong { color: var(--ink); opacity: 0.8; font: 400 clamp(36px, 5vw, 64px)/1 var(--font-ui); }
 .prop span { padding: 5px 8px; border-radius: 5px; background: rgba(3, 16, 44, 0.62); color: #fff; font: 500 11px/14px var(--font-ui); }
@@ -673,6 +672,10 @@ main { display: block; }
 .guide__logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .guide h3 { font: 700 18px/25px var(--font-head); }
 .guide p { font-size: 14px; line-height: 20px; margin-top: 8px; }
+.guide__actions { gap: 10px; }
+.brief-access { max-width: 900px; padding: 18px 22px; }
+.brief-access h4 { font-size: 16px; line-height: 22px; }
+.guide--wide { grid-column: 1 / -1; }
 
 /* ---- Footer ---------------------------------------------------------------------------------------- */
 .footer { background: var(--sc-industry-darker); color: var(--text-on-dark-muted); }
@@ -740,6 +743,7 @@ main { display: block; }
 .ev-card img { display: block; width: auto; height: auto; max-width: 100%; min-height: 0; flex: 1; object-fit: cover; object-position: top; border-radius: 8px 8px 0 0; }
 .ev-links { list-style: none; margin: 0; padding: 0 8px; }
 .ev-links li { padding: 10px 0; border-bottom: 1px solid var(--line-card); color: var(--text-strong); font: 500 14px/20px var(--font-ui); }
+.ev-links li:last-child { border-bottom: 0; }
 .ev-links a { color: inherit; text-decoration: none; }
 .ev-links a[href]:hover { color: var(--sc-dodger); }
 
@@ -753,22 +757,24 @@ main { display: block; }
 .inv-el figcaption { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 14px 12px; font-size: 13px; color: var(--text-strong); }
 .inv-el figcaption .row { gap: 6px; }
 .inv-feat img { display: block; width: 100%; height: auto; }
-.inv-photos { margin-top: 10px; gap: 12px; }
+.inv-photos { margin-top: 10px; gap: 12px; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.inv-ppt { margin-top: 10px; max-width: 560px; }
+@media (max-width: 1000px) { .inv-photos { grid-template-columns: repeat(2, minmax(0, 1fr)); } .inv-photo-dl { grid-column: 1 / -1; } }
 .inv-photos img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius-tile); }
 
 /* Sub brands */
 .subbrand { position: relative; }
 .subbrand__tag { position: absolute; top: 48px; left: 0; }
-.subbrand__dl { position: absolute; top: 18px; right: 0; }
 .subbrand > h3 .subpanel__toggle { padding-bottom: 48px; font-size: 26px; line-height: 32px; }
 .sb-logo { margin: 0; background: #fff; border: 1px solid var(--line-card); border-radius: var(--radius-panel); overflow: hidden; }
 .sb-logo img { display: block; width: 100%; height: auto; }
 .sb-logo--dark { background: #0E2030; border-color: transparent; }
-.sb-logo figcaption { justify-content: center; gap: 8px; padding: 12px; }
+.sb-logo figcaption { padding: 4px 18px 10px; }
 .sb-marks { display: flex; flex-wrap: wrap; gap: 14px; padding: 14px; background: #fff; border: 1px solid var(--line-card); border-radius: var(--radius-panel); }
 .sb-mark { flex: 1 1 200px; margin: 0; display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: var(--radius-tile); font-size: 13px; color: var(--text-strong); }
 .sb-mark img { display: block; width: auto; height: 56px; }
 .sb-mark--dark { background: #0E2030; color: #fff; }
+.sb-marks__dl { flex: 1 1 100%; display: flex; justify-content: center; padding-top: 14px; border-top: 1px solid var(--line-card); }
 .sb-font { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; }
 .sb-font .pill { margin-top: 6px; }
 .sb-scale { padding: 0; }
@@ -783,7 +789,16 @@ main { display: block; }
 .logo-box__meta p { font-size: 14px; line-height: 20px; color: var(--text-muted); }
 .logo-box--dark .logo-box__meta h4, .logo-box--dark .logo-box__meta p { color: #fff; }
 .logo-box__meta .row { gap: 8px; flex-wrap: nowrap; }
-.logo-pack { flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.logo-update h4 { color: var(--text-strong); font: 700 18px/25px var(--font-head); }
+.logo-pack { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.logo-pack .row { gap: 10px; }
+/* print / screen download rows (Figma 1342:477): CMYK for print, RGB for screen */
+.dl-rows-print { flex: 1 1 100%; display: grid; }
+.dl-row-print { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 10px 0; }
+.dl-row-print + .dl-row-print { border-top: 1px solid var(--line-card); }
+.dl-row-print span { flex: 0 0 56px; color: var(--text-strong); font: 700 13px/18px var(--font-ui); letter-spacing: 0.5px; }
+.logo-box--dark .dl-row-print span, .sb-logo--dark .dl-row-print span { color: #fff; }
+.logo-box--dark .dl-row-print + .dl-row-print, .sb-logo--dark .dl-row-print + .dl-row-print { border-top-color: rgba(255, 255, 255, 0.25); }
 .logo-pack p { font-size: 14px; color: var(--text-muted); }
 
 /* Product logos on one panel */
@@ -809,9 +824,13 @@ main { display: block; }
 .icon-board.is-dark .icon-empty { color: #fff; }
 
 /* Images */
-.img-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px 24px; }
-.img-grid img { display: block; width: 100%; height: auto; border-radius: var(--radius-tile); }
-.img-grid img:nth-child(n+5) { border: 1px solid var(--line-accent); }
+.img-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px 24px; align-items: stretch; }
+.img-grid img { display: block; width: 100%; height: 100%; min-height: 150px; object-fit: cover; border-radius: var(--radius-tile); }   /* rows grow to the download cards' height */
+/* cutouts carry their own 1 px frame in the file, so no CSS border (it doubled up, #146) */
+.img-pack { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px 16px; background: #fff; border: 1px solid var(--line-accent); border-radius: var(--radius-tile); }
+.img-pack h4 { color: var(--text-strong); font: 700 15px/20px var(--font-head); }
+.img-pack p, .img-pack li { font-size: 13px; line-height: 18px; color: var(--text-muted); }
+.img-pack .btn { margin-top: auto; align-self: flex-end; }
 .img-copy h3, .img-panel h3 { color: var(--text-strong); font: 700 18px/26px var(--font-head); }
 .img-copy p, .img-panel p { font-size: 15px; line-height: 21px; color: var(--text-muted); }
 .img-panel { padding: 24px; background: #fff; border: 1px solid var(--line-accent); border-radius: var(--radius-panel); }
@@ -821,12 +840,14 @@ main { display: block; }
 .img-arrow svg { width: 18px; height: 18px; }
 @media (max-width: 800px) {
   .img-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .img-pack { grid-column: 1 / -1; }
   .img-steps { flex-direction: column; }
   .img-arrow { transform: rotate(90deg); }
 }
 
 /* Templates */
 .ppt-row { display: grid; grid-template-columns: minmax(240px, 1fr) minmax(0, 2.4fr); gap: 20px; align-items: start; }
+.ppt-toolkit { margin-top: 20px; max-width: 560px; }
 .ppt-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .ppt-grid img { display: block; width: 100%; height: auto; border: 1px solid var(--line-card); border-radius: 6px; }
 @media (max-width: 900px) { .ppt-row { grid-template-columns: minmax(0, 1fr); } .ppt-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

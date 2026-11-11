@@ -198,7 +198,7 @@
         aria-label="Copy ${name}${step ? " " + step : ""}, ${hex}, RGB ${rgb(hex).join(" ")}${print ? ", CMYK " + print.join(" ") : ""}">
         <span class="swatch__chip" style="background:${hex}">
           <span class="swatch__step${isDefault ? " is-pill" : backed}" style="${isDefault ? "" : `color:${ink}`}">${label}</span>
-          <span class="swatch__info${backed}" style="${backed ? "" : `color:${ink};background:${hex}`}">
+          <span class="swatch__info" style="color:${ink};background:${hex}${backed ? `;text-shadow:0 0 6px ${ink === "#FFFFFF" ? "rgba(14,32,48,.6)" : "rgba(255,255,255,.7)"}` : ""}">
             ${print ? `<span><b>CMYK</b> ${print.join(" ")}</span>` : ""}
             <span><b>RGB</b> ${rgb(hex).join(" ")}</span>
             <span><b>HEX</b> ${hex}</span>
